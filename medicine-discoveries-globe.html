@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>אטלס התגליות ברפואה – 45 תגליות שעיצבו את הרפואה</title>
+<meta name="description" content="גלובוס אינטראקטיבי של 45 תגליות ברפואה, מהיפוקרטס ועד CRISPR – במקום שבו קרו, עם ציר זמן, סינון לפי נושא ושאלה לכיתה. למגמת רפואה.">
+<meta property="og:title" content="🩺 אטלס התגליות ברפואה">
+<meta property="og:description" content="מהיפוקרטס ועד חיסוני mRNA – 45 תגליות על הגלובוס, עם ציר זמן ושאלה לכיתה.">
+<meta name="theme-color" content="#0B6E78">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+:root { --bg: #F2F8F8; --ink: #1F2B33; --muted: #5B6B72; --card: #fff; --line: #D3E4E6; --accent: #0B6E78; --navy: #183A52; --warm: #E8F3F4; }
+
+html, body { margin: 0px; height: 100%; }
+
+body { font-family: Rubik, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--ink); display: flex; flex-direction: column; min-height: 100dvh; overflow-x: hidden; }
+
+button { font-family: inherit; cursor: pointer; }
+
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.top { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 12px 16px 6px; }
+
+h1 { margin: 0px; font-size: clamp(1.25rem, 4.6vw, 2.1rem); font-weight: 800; letter-spacing: -0.3px; }
+
+.sub { margin: 2px 0px 0px; color: var(--muted); font-size: clamp(0.85rem, 2.6vw, 1.05rem); }
+
+.actions { display: flex; gap: 8px; align-items: center; }
+
+.seg { display: flex; background: rgb(220, 237, 239); border-radius: 999px; padding: 3px; }
+
+.seg button { border: 0px; background: transparent; padding: 7px 12px; border-radius: 999px; font-size: 0.92rem; color: var(--ink); }
+
+.seg button.on { background: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 4px; font-weight: 700; }
+
+.btn { border: 1px solid var(--line); background: rgb(255, 255, 255); border-radius: 999px; padding: 8px 13px; font-size: 0.92rem; color: var(--ink); }
+
+.btn:hover { background: rgb(234, 246, 247); }
+
+.chips { display: flex; gap: 6px; overflow-x: auto; padding: 6px 16px 8px; scrollbar-width: none; }
+
+.chips::-webkit-scrollbar { display: none; }
+
+.chip { flex: 0 0 auto; border: 1.5px solid var(--c,#999); background: rgb(255, 255, 255); color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 0.88rem; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+
+.chip .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+
+.chip.off { opacity: 0.45; border-style: dashed; }
+
+.chip.all { --c: var(--navy); }
+
+.brand h1 { color: var(--navy); }
+
+main { flex: 1 1 0%; position: relative; min-height: 0px; display: flex; }
+
+.globe-wrap { position: relative; isolation: isolate; z-index: 0; flex: 1 1 0%; min-height: 56vh; overflow: hidden; background: radial-gradient(circle at 50% 45%, rgb(255, 255, 255) 0%, rgb(230, 242, 243) 55%, rgb(212, 232, 234) 100%); }
+
+#globe { position: absolute; inset: 0px; direction: ltr; transition: transform 0.5s; }
+
+@media (max-width: 899px) {
+  body.sheet-open #globe { transform: translateY(-37%); }
+}
+
+.pw { position: absolute; left: 0px; top: 0px; pointer-events: auto; }
+
+.loading { position: absolute; inset: 0px; display: grid; place-items: center; color: var(--muted); font-size: 1.05rem; pointer-events: none; }
+
+.hint { position: absolute; bottom: 6px; inset-inline: 0px; text-align: center; margin: 0px; font-size: 0.78rem; color: var(--muted); pointer-events: none; }
+
+.toast { position: absolute; top: 10px; inset-inline: 0px; margin: auto; width: max-content; max-width: 92%; background: rgba(31, 42, 68, 0.92); color: rgb(255, 255, 255); padding: 8px 14px; border-radius: 12px; font-size: 0.95rem; opacity: 0; transform: translateY(-6px); transition: 0.3s; pointer-events: none; text-align: center; }
+
+.toast.show { opacity: 1; transform: none; }
+
+.pin { width: 30px; height: 30px; border-radius: 50%; background: rgb(255, 255, 255); border: 3px solid var(--c); display: grid; place-items: center; font-size: 15px; line-height: 1; box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 6px; cursor: pointer; transition: transform 0.15s, opacity 0.25s; pointer-events: auto; user-select: none; position: relative; }
+
+.pin:hover { transform: scale(1.2); }
+
+.pin.cluster { background: var(--navy); color: rgb(255, 255, 255); border-color: rgb(242, 193, 78); font-weight: 800; font-size: 13px; font-family: Rubik, Arial, sans-serif; }
+
+.pin.cluster::after { content: attr(data-e); position: absolute; top: -9px; inset-inline-end: -9px; font-size: 12px; background: rgb(255, 255, 255); border-radius: 50%; width: 18px; height: 18px; display: grid; place-items: center; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px; }
+
+.pin.new { animation: 0.7s ease 0s 1 normal none running pop; }
+
+@keyframes pop { 
+  0% { transform: scale(0); }
+  60% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.list-wrap { flex: 1 1 0%; overflow: auto; padding: 4px 12px 16px; }
+
+.list { list-style: none; margin: 0px auto; padding: 0px; max-width: 820px; display: grid; gap: 8px; }
+
+.li { display: flex; gap: 10px; align-items: center; background: rgb(255, 255, 255); border: 1px solid var(--line); border-inline-start: 6px solid var(--c); border-radius: 14px; padding: 10px 12px; cursor: pointer; text-align: start; width: 100%; color: var(--ink); font-size: 1rem; }
+
+.li:hover { background: rgb(245, 251, 251); }
+
+.li .yr { font-weight: 800; min-width: 3.4em; color: var(--c); font-size: 1.05rem; text-align: center; line-height: 1.05; }
+
+.li .yr small { display: block; font-size: 0.68rem; font-weight: 600; }
+
+.li .em { font-size: 1.4rem; }
+
+.li .nm { font-weight: 700; display: block; }
+
+.li .pl { color: var(--muted); font-size: 0.85rem; }
+
+.empty { text-align: center; color: var(--muted); padding: 30px; }
+
+.timeline { display: flex; gap: 12px; align-items: center; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgb(255, 255, 255); border-top: 1px solid var(--line); }
+
+.play { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; border: 0px; background: var(--accent); color: rgb(255, 255, 255); font-size: 1.2rem; box-shadow: rgba(11, 110, 120, 0.35) 0px 2px 6px; }
+
+.play.on { background: var(--navy); }
+
+.tl-body { flex: 1 1 0%; min-width: 0px; }
+
+.tl-head { display: flex; justify-content: space-between; gap: 8px; font-size: 0.92rem; margin-bottom: 2px; }
+
+.tl-head b { font-size: 1.15rem; color: var(--accent); }
+
+.count { color: var(--muted); }
+
+input[type="range"] { width: 100%; accent-color: var(--accent); height: 28px; margin: 0px; }
+
+.tl-ends { position: relative; height: 1.1em; font-size: 0.72rem; color: var(--muted); margin-inline: 8px; }
+
+.tl-ends span { position: absolute; transform: translateX(50%); white-space: nowrap; }
+
+.tl-ends span.s { transform: none; }
+
+.tl-ends span.e { transform: translateX(100%); }
+
+.sheet { position: fixed; z-index: 1000; inset-inline: 0px; bottom: 0px; display: flex; justify-content: center; pointer-events: none; }
+
+.sheet-in { pointer-events: auto; position: relative; background: var(--card); width: 100%; max-width: 560px; max-height: 78dvh; overflow: auto; border-radius: 20px 20px 0px 0px; box-shadow: rgba(0, 0, 0, 0.25) 0px -8px 30px; padding: 18px 18px calc(18px + env(safe-area-inset-bottom)); animation: 0.25s ease 0s 1 normal none running up; }
+
+@keyframes up { 
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+.close { position: absolute; top: 10px; inset-inline-end: 10px; border: 0px; background: rgb(230, 240, 241); width: 36px; height: 36px; border-radius: 50%; font-size: 1rem; color: var(--ink); }
+
+.c-top { display: flex; gap: 12px; align-items: center; padding-inline-end: 40px; }
+
+.c-em { width: 56px; height: 56px; flex: 0 0 auto; border-radius: 16px; display: grid; place-items: center; font-size: 30px; background: color-mix(in srgb,var(--c) 14%,#fff); border: 2px solid var(--c); }
+
+.c-top h2 { margin: 0px; font-size: 1.25rem; line-height: 1.25; }
+
+.who { display: block; font-weight: 600; font-size: 0.95rem; margin-top: 3px; }
+
+.orig { direction: ltr; unicode-bidi: isolate; color: var(--muted); font-size: 0.85rem; display: inline-block; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0px 8px; }
+
+.tag { font-size: 0.85rem; padding: 4px 10px; border-radius: 999px; background: rgb(238, 245, 246); }
+
+.tag.t { background: var(--c); color: rgb(255, 255, 255); font-weight: 600; }
+
+.d { font-size: 1.05rem; line-height: 1.6; margin: 8px 0px; }
+
+.box { border-radius: 12px; padding: 10px 12px; margin: 10px 0px; line-height: 1.5; font-size: 0.98rem; }
+
+.why { background: rgb(255, 247, 230); border-inline-start: 4px solid rgb(242, 185, 78); }
+
+.q { background: rgb(234, 244, 245); border-inline-start: 4px solid var(--accent); }
+
+.box b { display: block; margin-bottom: 2px; }
+
+.c-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; font-size: 0.88rem; }
+
+.c-foot a { color: var(--accent); }
+
+.nav2 { display: flex; gap: 6px; }
+
+.nav2 button { border: 1px solid var(--line); background: rgb(255, 255, 255); border-radius: 999px; padding: 6px 12px; font-size: 0.88rem; color: var(--ink); }
+
+.pick { list-style: none; padding: 0px; margin: 12px 0px 0px; display: grid; gap: 6px; }
+
+.pick h3 { margin: 0px; }
+
+@media (min-width: 900px) {
+  .sheet { inset-inline: auto 16px; top: 120px; bottom: 100px; align-items: flex-start; }
+  .sheet-in { border-radius: 20px; max-height: 100%; width: 430px; box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 40px; }
+  .d { font-size: 1.12rem; }
+  .hint { font-size: 0.9rem; }
+}
+
+@media (max-width: 420px) {
+  .top { padding: 10px 12px 4px; }
+  .chips { padding-inline: 12px; }
+  .actions { width: 100%; justify-content: space-between; }
+  .seg button, .btn { padding: 7px 10px; font-size: 0.88rem; }
+  .timeline { padding-inline: 12px; gap: 10px; }
+}
+
+@media (max-width: 520px) {
+  .tl-ends .k1 { display: none; }
+  .tl-ends { font-size: 0.68rem; }
+}
+.nav2 button:disabled{opacity:.4;cursor:default}
+.list-wrap .list{padding-top:4px}
+</style></head><body>
+<header class="top"><div class="brand"><h1>🩺 אטלס התגליות ברפואה</h1><p class="sub">2,400 שנה של רפואה – כל תגלית במקום שבו קרתה</p></div>
+<div class="actions"><div class="seg" role="tablist" aria-label="תצוגה"><button id="vGlobe" class="on" role="tab" aria-selected="true">🌍 גלובוס</button><button id="vList" role="tab" aria-selected="false">📋 ציר זמן</button></div><button id="rand" class="btn">🎲 תגלית אקראית</button></div></header>
+<nav class="chips" id="chips" aria-label="סינון לפי נושא"></nav>
+<main id="main">
+<section id="globeWrap" class="globe-wrap" aria-label="גלובוס"><div id="globe"></div><div class="loading" id="loading">טוען את הגלובוס…</div><div id="toast" class="toast" aria-live="polite"></div><p class="hint">גררו לסיבוב · צבטו לזום · הקישו על סיכה</p></section>
+<section id="listWrap" class="list-wrap" hidden aria-label="ציר זמן"><ul class="list" id="list"></ul></section>
+</main>
+<footer class="timeline" aria-label="ציר זמן"><button id="play" class="play" aria-label="מסע בזמן">▶</button><div class="tl-body"><div class="tl-head"><span>מסע בזמן עד <b id="yr">היום</b></span><span id="count" class="count"></span></div>
+<input id="slider" type="range" min="0" max="1000" step="1" value="1000" aria-label="שנה">
+<div class="tl-ends" aria-hidden="true"><span class="k0 s" style="inset-inline-start:0%">500 לפנה״ס</span><span class="k1" style="inset-inline-start:15%">1500</span><span class="k2" style="inset-inline-start:33%">1800</span><span class="k3" style="inset-inline-start:54%">1900</span><span class="k4" style="inset-inline-start:70%">1950</span><span class="k5 e" style="inset-inline-start:100%">2025</span></div></div></footer>
+<div class="sheet" id="sheet" hidden><div class="sheet-in" id="sheetIn" role="dialog" aria-label="פרטי התגלית"></div></div>
+<script src="globe/globe.gl.min.js"></script>
+<script>
+var TOPICS={anat:["אנטומיה ופיזיולוגיה","#D9480F"],inf:["מחלות זיהומיות וחיסונים","#2B8A3E"],drug:["תרופות ואנטיביוטיקה","#7048E8"],surg:["ניתוחים והרדמה","#1C7ED6"],diag:["אבחון והדמיה","#0C8599"],gen:["גנטיקה ורפואה מולקולרית","#AE3EC9"],heart:["לב ודם","#E03131"],pub:["בריאות הציבור","#B08900"]};
+var D=[
+{y:"כ-400 לפנה״ס",n:-400,t:"רפואה מבוססת תצפית",e:"📜",c:"pub",w:"היפוקרטס",o:"Hippocrates",pl:"האי קוס, יוון",la:36.89,lo:27.29,
+ d:"היפוקרטס טען שמחלות נגרמות מסיבות טבעיות, ולא מעונש של האלים. הוא לימד לבחון את החולה, לתעד תסמינים ולעקוב אחרי מהלך המחלה.",
+ why:"זו ההתחלה של הרפואה כמקצוע מבוסס תצפית. 'שבועת היפוקרטס' קרויה על שמו, ורעיונות ממנה מלווים רופאים עד היום.",
+ q:"איזה עיקרון משבועת הרופאים עדיין חשוב היום? ואיזה רעיון הייתם מוסיפים לה?"},
+{y:"כ-170 לספירה",n:170,t:"ניסויים בגוף החי",e:"🐖",c:"anat",w:"גלנוס",o:"Galen",pl:"רומא, איטליה",la:41.9,lo:12.5,
+ d:"גלנוס ערך ניסויים בבעלי חיים והראה, למשל, שבעורקים זורם דם ולא אוויר, ושהמוח שולט בקול דרך עצבים.",
+ why:"הוא היה מהראשונים שבדקו את הגוף בניסויים. אבל גם הטעויות שלו, שנבעו מנתיחת בעלי חיים ולא בני אדם, נשארו מקובלות כמעט 1,400 שנה.",
+ q:"למה לדעתכם אנשים המשיכו להאמין לטעויות של גלנוס במשך מאות שנים?"},
+{y:"1025",n:1025,t:"'הקאנון ברפואה'",e:"📚",c:"drug",w:"אבן סינא",o:"Avicenna",pl:"המדאן, פרס (איראן)",la:34.8,lo:48.52,
+ d:"אבן סינא כתב אנציקלופדיה רפואית ענקית שסיכמה את הידע של זמנו. הוא תיאר מחלות מדבקות, המליץ על בידוד, וקבע כללים לבדיקת תרופות.",
+ why:"הספר שימש ספר לימוד באוניברסיטאות באירופה ובמזרח התיכון כ-600 שנה.",
+ q:"אילו כללים צריך לקיים כדי לבדוק אם תרופה באמת עובדת?"},
+{y:"כ-1198",n:1198,t:"'הנהגת הבריאות'",e:"🥗",c:"pub",w:"הרמב״ם",o:"Maimonides",pl:"פוסטאט (קהיר), מצרים",la:30.0,lo:31.23,
+ d:"הרמב״ם, רופא החצר של צלאח א-דין, כתב לבנו של הסולטן מדריך לחיים בריאים: תזונה מאוזנת, פעילות גופנית, שינה טובה ושמירה על מצב הרוח.",
+ why:"זו גישה של רפואה מונעת: לשמור על הבריאות לפני שחולים. רוב העצות נכונות גם היום.",
+ q:"איזו עצה לאורח חיים בריא הכי קשה לכם ליישם? למה?"},
+{y:"1543",n:1543,t:"אטלס האנטומיה המודרני",e:"💀",c:"anat",w:"אנדראס וזאליוס",o:"Andreas Vesalius",pl:"פדובה, איטליה",la:45.41,lo:11.88,
+ d:"וזאליוס נתח גופות של בני אדם בעצמו, ופרסם ספר אנטומיה מאויר ומדויק בשם 'על מבנה גוף האדם'. הוא תיקן טעויות רבות של גלנוס.",
+ why:"מכאן והלאה, ידע על הגוף נבדק בתצפית ישירה ולא רק בהסתמכות על ספרים עתיקים.",
+ q:"מה ההבדל בין ללמוד מספר לבין ללמוד מתצפית? מתי כל אחד מהם עדיף?"},
+{y:"1545",n:1545,t:"טיפול עדין בפצעים",e:"🩹",c:"surg",w:"אמברואז פארה",o:"Ambroise Paré",pl:"פריז, צרפת",la:48.86,lo:2.35,
+ d:"בשדה הקרב נגמר לפארה השמן הרותח שבו צרבו פצעי ירי. הוא מרח במקומו משחה עדינה, וגילה שהפצועים החלימו טוב יותר. בהמשך קשר כלי דם בחוטים במקום לצרוב אותם.",
+ why:"דוגמה לכך שתצפית מקרית ופתיחות לשינוי יכולות להחליף שיטה מקובלת ומזיקה.",
+ q:"אילו גילויים חשובים נוספים קרו במקרה? מה צריך כדי לשים לב לתגלית מקרית?"},
+{y:"1628",n:1628,t:"מחזור הדם",e:"🔄",c:"heart",w:"ויליאם הארווי",o:"William Harvey",pl:"לונדון, אנגליה",la:51.51,lo:-0.13,
+ d:"הארווי חישב כמה דם הלב מזרים, והראה שהדם לא נוצר ונצרך כל הזמן, אלא מסתובב במעגל: מהלב בעורקים וחזרה אליו בוורידים.",
+ why:"זה הבסיס להבנת מערכת הדם, ולכל מה שאנחנו לומדים על לחץ דם, דופק ותפוקת לב.",
+ q:"הארווי השתמש בחישוב כדי להוכיח את הרעיון. איזה חישוב פשוט הייתם עושים כדי לשכנע מישהו?"},
+{y:"1747",n:1747,t:"הניסוי הקליני הראשון – צפדינה",e:"🍋",c:"pub",w:"ג׳יימס לינד",o:"James Lind",pl:"על ספינה ליד פלימות׳, אנגליה",la:50.37,lo:-4.14,
+ d:"לינד חילק 12 מלחים חולי צפדינה לזוגות, ונתן לכל זוג טיפול אחר. רק הזוג שקיבל תפוזים ולימונים החלים במהירות.",
+ why:"זה אחד הניסויים המבוקרים הראשונים: משווים כמה טיפולים בקבוצות דומות. היום ידוע שצפדינה נגרמת ממחסור בוויטמין C.",
+ q:"למה חשוב שבניסוי יהיו כמה קבוצות, ושכל השאר יהיה דומה ביניהן?"},
+{y:"1796",n:1796,t:"החיסון הראשון – אבעבועות שחורות",e:"🐄",c:"inf",w:"אדוארד ג׳נר",o:"Edward Jenner",pl:"ברקלי, אנגליה",la:51.69,lo:-2.46,
+ d:"ג׳נר שם לב שחולבות שנדבקו באבעבועות הפרות לא חלו באבעבועות שחורות. הוא הדביק ילד באבעבועות פרות, והילד היה מוגן מהמחלה הקטלנית.",
+ why:"זה היה החיסון הראשון, והמילה 'וקצינה' באה מהמילה הלטינית לפרה.",
+ q:"הניסוי של ג׳נר היה על ילד. האם היום היה מותר לעשות ניסוי כזה? למה?"},
+{y:"1816",n:1816,t:"הסטטוסקופ",e:"🩺",c:"diag",w:"רנה לאנק",o:"René Laennec",pl:"פריז, צרפת",la:48.85,lo:2.34,
+ d:"לאנק גלגל גליון נייר לצינור כדי להקשיב ללב של מטופלת, ושמע את הלב טוב יותר מאשר בהצמדת האוזן. מזה פיתח את הסטטוסקופ.",
+ why:"בפעם הראשונה רופאים יכלו 'לשמוע' בבירור את הלב והריאות ולקשר בין צלילים למחלות.",
+ q:"אילו צלילים של הלב והריאות רופא מחפש בהאזנה בסטטוסקופ?"},
+{y:"1846",n:1846,t:"הרדמה כללית באתר",e:"😴",c:"surg",w:"ויליאם מורטון",o:"William T. G. Morton",pl:"בוסטון, ארה״ב",la:42.36,lo:-71.07,
+ d:"רופא השיניים מורטון הדגים בבית החולים מסצ׳וסטס ניתוח שבו המטופל הורדם באדי אתר, ולא הרגיש כאב.",
+ why:"לפני ההרדמה ניתוחים היו קצרים וכואבים מאוד. בזכותה אפשר לבצע ניתוחים ארוכים ומורכבים.",
+ q:"איך השתנו הניתוחים אחרי שהמציאו הרדמה? חשבו על הזמן, הדיוק והמטופל."},
+{y:"1847",n:1847,t:"שטיפת ידיים מצילה חיים",e:"🧼",c:"inf",w:"איגנץ זמלווייס",o:"Ignaz Semmelweis",pl:"וינה, אוסטריה",la:48.21,lo:16.37,
+ d:"זמלווייס הבחין שיולדות מתו הרבה יותר במחלקה שבה רופאים הגיעו ישר מנתיחת גופות. כשהורה לשטוף ידיים בתמיסת כלור, התמותה צנחה.",
+ why:"היום שטיפת ידיים היא אחד האמצעים החשובים נגד זיהומים בבתי חולים. אבל בזמנו רוב הרופאים דחו את הרעיון.",
+ q:"למה לדעתכם רופאים סירבו לקבל את הרעיון של זמלווייס, למרות התוצאות?"},
+{y:"1854",n:1854,t:"מפת הכולרה",e:"🚰",c:"pub",w:"ג׳ון סנו",o:"John Snow",pl:"לונדון, אנגליה",la:51.51,lo:-0.14,
+ d:"סנו סימן על מפה את בתי החולים בכולרה בשכונת סוהו, וגילה שהם מתרכזים סביב משאבת מים אחת ברחוב ברוד. אחרי שפירקו את ידית המשאבה, ההתפרצות דעכה.",
+ why:"זו ההתחלה של האפידמיולוגיה: חקר מחלות לפי מיקום ודפוסים באוכלוסייה.",
+ q:"איך היו חוקרים התפרצות כזו היום? אילו נתונים היו אוספים?"},
+{y:"1854–1856",n:1855,t:"סיעוד מודרני וסטטיסטיקה",e:"🪔",c:"pub",w:"פלורנס נייטינגייל",o:"Florence Nightingale",pl:"סקוטרי (איסטנבול), טורקיה",la:41.0,lo:29.02,
+ d:"במלחמת קרים שיפרה נייטינגייל את הניקיון, האוורור והתזונה בבית החולים הצבאי. היא תיעדה את התמותה, והציגה אותה בתרשימים שהבהירו שרוב החיילים מתו ממחלות ולא מפצעים.",
+ why:"היא ייסדה את הסיעוד כמקצוע, והראתה איך נתונים ותרשימים משנים מדיניות.",
+ q:"איך תרשים יכול לשכנע יותר מטבלה של מספרים?"},
+{y:"1865–1867",n:1866,t:"ניתוח אנטיספטי",e:"🧴",c:"surg",w:"ג׳וזף ליסטר",o:"Joseph Lister",pl:"גלזגו, סקוטלנד",la:55.86,lo:-4.25,
+ d:"בהשראת פסטר, ליסטר חיטא פצעים, תחבושות וכלים בחומצה קרבולית. מספר הזיהומים והמוות אחרי ניתוחים ירד מאוד.",
+ why:"זו ההתחלה של עבודה סטרילית בחדר ניתוח.",
+ q:"אילו פעולות בחדר ניתוח של היום נועדו למנוע זיהום?"},
+{y:"1882",n:1882,t:"חיידק השחפת",e:"🦠",c:"inf",w:"רוברט קוך",o:"Robert Koch",pl:"ברלין, גרמניה",la:52.52,lo:13.4,
+ d:"קוך זיהה את החיידק שגורם לשחפת, שהייתה אז מהמחלות הקטלניות ביותר. הוא גם ניסח כללים להוכחה שחיידק מסוים גורם למחלה מסוימת.",
+ why:"התגלית חיזקה את 'תורת החיידקים', ופתחה את הדרך לאבחון ולטיפול.",
+ q:"איך אפשר להוכיח שחיידק מסוים הוא זה שגורם למחלה, ולא רק נמצא ליד?"},
+{y:"1885",n:1885,t:"חיסון נגד כלבת",e:"🐕",c:"inf",w:"לואי פסטר",o:"Louis Pasteur",pl:"פריז, צרפת",la:48.84,lo:2.31,
+ d:"פסטר פיתח חיסון מנגיף מוחלש, ונתן אותו לילד שננשך על ידי כלב נגוע. הילד לא חלה.",
+ why:"זה הראה שאפשר להכין חיסונים במעבדה, גם לפני שמבינים מהו הגורם עצמו.",
+ q:"למה אפשר לחסן נגד כלבת גם אחרי הנשיכה, ולא רק לפניה?"},
+{y:"1895",n:1895,t:"קרני רנטגן",e:"🦴",c:"diag",w:"וילהלם רנטגן",o:"Wilhelm Röntgen",pl:"וירצבורג, גרמניה",la:49.79,lo:9.95,
+ d:"רנטגן גילה קרינה שעוברת דרך רקמות רכות אך נבלמת בעצמות. צילום היד של אשתו, עם הטבעת, הפך למפורסם.",
+ why:"בפעם הראשונה אפשר היה לראות בתוך הגוף בלי ניתוח.",
+ q:"אילו בעיות רפואיות מאבחנים היום בצילום רנטגן? ומה החיסרון שלו?"},
+{y:"1897",n:1897,t:"אספירין",e:"💊",c:"drug",w:"פליקס הופמן (באייר)",o:"Felix Hoffmann",pl:"וופרטל, גרמניה",la:51.26,lo:7.18,
+ d:"הכימאי הופמן הכין גרסה יציבה של חומר מקליפת עץ הערבה, שגרמה פחות גירוי בקיבה. כך נולד האספירין.",
+ why:"היא אחת התרופות הנפוצות בעולם, ומשמשת גם במינון נמוך למניעת התקפי לב.",
+ q:"איך תרופה נגד כאב יכולה לעזור למנוע התקף לב? (רמז: טסיות)"},
+{y:"1897",n:1897.5,t:"היתוש מעביר מלריה",e:"🦟",c:"inf",w:"רונלד רוס",o:"Ronald Ross",pl:"סקונדרבאד, הודו",la:17.44,lo:78.5,
+ d:"רוס מצא את טפיל המלריה בקיבה של יתושה שעקצה חולה, והוכיח שהיתוש הוא שמעביר את המחלה.",
+ why:"כשיודעים איך מחלה עוברת, אפשר למנוע אותה: כילות, ייבוש ביצות וקוטלי חרקים.",
+ q:"אילו מחלות נוספות מועברות על ידי יתושים, וגם בישראל?"},
+{y:"1901",n:1901,t:"סוגי הדם",e:"🩸",c:"heart",w:"קרל לנדשטיינר",o:"Karl Landsteiner",pl:"וינה, אוסטריה",la:48.22,lo:16.36,
+ d:"לנדשטיינר גילה שדם של אנשים שונים נצמד ומתגבש כשמערבבים אותו, ומיין את הדם לסוגים A, B ו-O (ובהמשך נמצא גם AB).",
+ why:"מאז אפשר לבצע עירויי דם בבטחה, בהתאמה בין התורם למקבל.",
+ q:"מהו סוג הדם שלכם? למי אתם יכולים לתרום, וממי לקבל?"},
+{y:"1909",n:1909,t:"'קליע הקסם' – סלוורסן",e:"✨",c:"drug",w:"פאול ארליך",o:"Paul Ehrlich",pl:"פרנקפורט, גרמניה",la:50.11,lo:8.68,
+ d:"ארליך חיפש חומר שיפגע רק בחיידק ולא בגוף. אחרי מאות ניסיונות מצא את סלוורסן, התרופה היעילה הראשונה נגד עגבת.",
+ why:"זו התחלת הכימותרפיה: תרופה שמכוונת לגורם המחלה.",
+ q:"מה הכוונה ב'קליע קסם'? איזו תרופה מודרנית מתאימה לכינוי הזה?"},
+{y:"1909",n:1909.5,t:"מחלת צ׳אגאס",e:"🪲",c:"inf",w:"קרלוס צ׳אגאס",o:"Carlos Chagas",pl:"לאסאנס, ברזיל",la:-17.9,lo:-44.53,
+ d:"צ׳אגאס גילה מחלה חדשה, את הטפיל שגורם לה ואת החרק שמעביר אותה. הכול בידי חוקר אחד, דבר נדיר מאוד.",
+ why:"המחלה פוגעת במיליוני אנשים באמריקה הלטינית, ויכולה לפגוע בלב שנים אחרי ההדבקה.",
+ q:"למה מחלות מסוימות נפוצות בעיקר במדינות עניות?"},
+{y:"1921–1922",n:1921,t:"אינסולין",e:"💉",c:"drug",w:"פרדריק באנטינג וצ׳ארלס בסט",o:"Banting & Best",pl:"טורונטו, קנדה",la:43.66,lo:-79.39,
+ d:"באנטינג ובסט הפיקו אינסולין מלבלב של כלבים. ב-1922 קיבל אותו לראשונה נער חולה סוכרת, ומצבו השתפר מיד.",
+ why:"סוכרת מסוג 1 הייתה עד אז גזר דין מוות. מאז חולים יכולים לחיות חיים מלאים.",
+ q:"מה תפקידו של האינסולין בגוף, ומה קורה כשהוא חסר?"},
+{y:"1928",n:1928,t:"פניצילין",e:"🧫",c:"drug",w:"אלכסנדר פלמינג",o:"Alexander Fleming",pl:"לונדון, אנגליה",la:51.52,lo:-0.17,
+ d:"פלמינג חזר מחופשה ומצא שעובש שגדל בצלחת חיידקים הרג את החיידקים סביבו. החומר שהעובש הפריש נקרא פניצילין.",
+ why:"זו האנטיביוטיקה הראשונה, והיא הצילה מיליוני חיים, בעיקר מאז מלחמת העולם השנייה.",
+ q:"מהי עמידות לאנטיביוטיקה, ואיך כל אחד מאיתנו יכול לעזור למנוע אותה?"},
+{y:"1953",n:1953,t:"מבנה ה-DNA",e:"🧬",c:"gen",w:"ווטסון, קריק ורוזלינד פרנקלין",o:"Watson, Crick & Franklin",pl:"קיימברידג׳, אנגליה",la:52.2,lo:0.12,
+ d:"בעזרת צילום קרני X של רוזלינד פרנקלין, הציעו ווטסון וקריק שה-DNA בנוי כסליל כפול, עם זוגות בסיסים קבועים.",
+ why:"המבנה הסביר איך מידע תורשתי נשמר ומשוכפל, והוא הבסיס לכל הגנטיקה המודרנית.",
+ q:"פרנקלין לא קיבלה את פרס נובל. מה זה מלמד על ההכרה במדעניות בתקופה ההיא?"},
+{y:"1954",n:1954,t:"השתלת הכליה הראשונה",e:"🫘",c:"surg",w:"ג׳וזף מאריי",o:"Joseph Murray",pl:"בוסטון, ארה״ב",la:42.34,lo:-71.11,
+ d:"מאריי השתיל כליה בין שני תאומים זהים. כיוון שהגוף לא דחה את האיבר, ההשתלה הצליחה.",
+ why:"זו השתלת האיבר המוצלחת הראשונה. בהמשך פותחו תרופות שמונעות דחייה גם בין אנשים שאינם תאומים.",
+ q:"למה דווקא תאומים זהים? מה הבעיה בהשתלה בין אנשים אחרים?"},
+{y:"1955",n:1955,t:"חיסון נגד פוליו",e:"🧒",c:"inf",w:"יונס סאלק",o:"Jonas Salk",pl:"פיטסבורג, ארה״ב",la:40.44,lo:-79.96,
+ d:"סאלק פיתח חיסון מנגיף מומת נגד שיתוק ילדים. לאחר ניסוי ענק, שבו השתתפו יותר ממיליון ילדים, החיסון הוכרז כבטוח ויעיל.",
+ why:"בעקבות החיסונים הפוליו כמעט נעלמה מהעולם. סאלק סירב לרשום פטנט על החיסון.",
+ q:"מה פירוש 'חסינות עדר', ולמה היא חשובה לאנשים שאי אפשר לחסן?"},
+{y:"1958",n:1958,t:"קוצב לב מושתל",e:"⚡",c:"heart",w:"אקה סנינג ורונה אלמקוויסט",o:"Åke Senning & Rune Elmqvist",pl:"סטוקהולם, שוודיה",la:59.33,lo:18.07,
+ d:"הקוצב המושתל הראשון הוכנס לגופו של ארנה לרסון, שהלב שלו פעם לאט מדי. לרסון חי עוד 43 שנה, ועבר 26 קוצבים.",
+ why:"קוצב לב שולח פולסים חשמליים כשמערכת ההולכה של הלב לא עובדת כמו שצריך.",
+ q:"איזה חלק במערכת ההולכה החשמלית של הלב הקוצב 'מחליף'?"},
+{y:"1967",n:1967,t:"השתלת הלב הראשונה",e:"❤️",c:"heart",w:"כריסטיאן ברנרד",o:"Christiaan Barnard",pl:"קייפטאון, דרום אפריקה",la:-33.94,lo:18.46,
+ d:"ברנרד השתיל לב של צעירה שנהרגה בתאונה בגופו של לואיס וושקנסקי. המושתל חי 18 ימים, ומת מדלקת ריאות.",
+ why:"ההשתלה הוכיחה שזה אפשרי. היום אלפי השתלות לב מתבצעות בכל שנה.",
+ q:"אילו שאלות מוסריות מעוררת תרומת איברים?"},
+{y:"1971",n:1971,t:"סורק CT",e:"🖥️",c:"diag",w:"גודפרי הונספילד",o:"Godfrey Hounsfield",pl:"לונדון, אנגליה",la:51.5,lo:-0.45,
+ d:"הונספילד, מהנדס בחברת EMI, בנה מכשיר שמצלם את הגוף בקרני רנטגן מזוויות רבות ומרכיב במחשב 'פרוסות' של הגוף. הסריקה הראשונה הייתה של מוח.",
+ why:"CT מאפשר לראות איברים פנימיים בפירוט רב, ומשמש היום במיון לאבחון מהיר.",
+ q:"מה ההבדל בין צילום רנטגן רגיל לבין סריקת CT?"},
+{y:"1971",n:1971.5,t:"קופקסון לטרשת נפוצה",e:"🧠",c:"drug",w:"מיכאל סלע, רות ארנון ודבורה טייטלבאום",o:"Sela, Arnon & Teitelbaum",pl:"מכון ויצמן, רחובות, ישראל",la:31.9,lo:34.81,
+ d:"החוקרים במכון ויצמן גילו חומר שמונע התקפים בבעלי חיים עם מחלה דמוית טרשת נפוצה. אחרי שנים של מחקר הוא אושר כתרופה ב-1996.",
+ why:"זו אחת התרופות הישראליות המצליחות בעולם, ומאות אלפי חולים השתמשו בה.",
+ q:"למה לוקח לפעמים יותר מעשרים שנה מהתגלית במעבדה ועד תרופה בבית מרקחת?"},
+{y:"1972",n:1972,t:"ארטמיסינין נגד מלריה",e:"🌿",c:"drug",w:"טו יויו",o:"Tu Youyou",pl:"בייג׳ינג, סין",la:39.9,lo:116.4,
+ d:"טו יויו חיפשה בספרי רפואה סינית עתיקים צמח נגד מלריה. היא הפיקה מצמח הלענה חומר שהורג את טפיל המלריה, ובדקה אותו קודם על עצמה.",
+ why:"התרופה הצילה מיליוני חיים, והיא קיבלה פרס נובל ב-2015.",
+ q:"מה אפשר ללמוד מכך שתרופה מודרנית נמצאה בספרים עתיקים?"},
+{y:"1973",n:1973,t:"הדמיית MRI",e:"🧲",c:"diag",w:"פול לאוטרבור",o:"Paul Lauterbur",pl:"סטוני ברוק, ארה״ב",la:40.91,lo:-73.12,
+ d:"לאוטרבור הראה איך שדה מגנטי וגלי רדיו יכולים ליצור תמונה של מה שבתוך הגוף. פיטר מנספילד באנגליה שיפר את השיטה.",
+ why:"MRI מראה רקמות רכות, כמו מוח, מפרקים ולב, בפירוט רב ובלי קרינה מייננת.",
+ q:"למה אסור להיכנס לבדיקת MRI עם חפצי מתכת?"},
+{y:"1978",n:1978,t:"תינוקת המבחנה הראשונה",e:"👶",c:"anat",w:"פטריק סטפטו ורוברט אדוארדס",o:"Steptoe & Edwards",pl:"אולדהאם, אנגליה",la:53.54,lo:-2.11,
+ d:"לואיז בראון נולדה אחרי שביצית הופרתה מחוץ לגוף והוחזרה לרחם. זו הייתה הלידה הראשונה בעולם בהפריה חוץ גופית.",
+ why:"מאז נולדו בעולם מיליוני תינוקות בהפריה חוץ גופית. ישראל מובילה בעולם בשימוש בה.",
+ q:"למה לדעתכם ישראל היא מהמדינות שמשתמשות הכי הרבה בהפריה חוץ גופית?"},
+{y:"1980",n:1980,t:"מיגור האבעבועות השחורות",e:"🌍",c:"pub",w:"ארגון הבריאות העולמי",o:"WHO",pl:"ז׳נבה, שווייץ",la:46.23,lo:6.13,
+ d:"אחרי מבצע חיסונים עולמי, ארגון הבריאות העולמי הכריז שהאבעבועות השחורות נעלמו מהעולם. המקרה הטבעי האחרון היה בסומליה ב-1977.",
+ why:"זו המחלה האנושית הראשונה (ועד היום היחידה) שמוגרה לגמרי, בזכות חיסונים.",
+ q:"איזו מחלה הייתם רוצים שימגרו בפעם הבאה? מה יעזור להצליח?"},
+{y:"1980",n:1980.5,t:"האוביקוויטין – 'נשיקת המוות' לחלבונים",e:"💋",c:"gen",w:"אהרן צ׳חנובר ואברהם הרשקו (עם ארווין רוז)",o:"Ciechanover, Hershko & Rose",pl:"הטכניון, חיפה, ישראל",la:32.78,lo:35.02,
+ d:"החוקרים גילו איך התא מסמן חלבונים שצריך לפרק: הוא מצמיד אליהם חלבון קטן בשם אוביקוויטין, ואז הם מפורקים.",
+ why:"המנגנון חשוב להבנת סרטן ומחלות נוספות, ובעקבותיו פותחו תרופות. הם קיבלו פרס נובל בכימיה ב-2004.",
+ q:"למה תא צריך לפרק חלבונים? מה יקרה אם לא יפרק אותם?"},
+{y:"1982",n:1982,t:"החיידק שגורם לכיב קיבה",e:"🍺",c:"inf",w:"בארי מרשל ורובין וורן",o:"Barry Marshall & Robin Warren",pl:"פרת׳, אוסטרליה",la:-31.95,lo:115.86,
+ d:"כולם חשבו שכיב קיבה נגרם מלחץ ומאוכל חריף. מרשל ו-וורן הראו שהגורם הוא חיידק, הליקובקטר פילורי. כדי להוכיח, מרשל שתה תרבית של החיידק וחלה.",
+ why:"היום מטפלים בכיב קיבה באנטיביוטיקה, ולא רק בהקלה על התסמינים.",
+ q:"האם זה בסדר שחוקר ינסה טיפול או מחלה על עצמו? מה היתרונות והסכנות?"},
+{y:"1983",n:1983,t:"זיהוי נגיף ה-HIV",e:"🔬",c:"inf",w:"לוק מונטנייה ופרנסואז בארה-סינוסי",o:"Montagnier & Barré-Sinoussi",pl:"מכון פסטר, פריז, צרפת",la:48.84,lo:2.31,
+ d:"החוקרות והחוקרים במכון פסטר זיהו את הנגיף שגורם לאיידס, שתוקף תאים של מערכת החיסון.",
+ why:"הזיהוי איפשר לפתח בדיקות דם ותרופות. היום נשאי HIV שמטופלים חיים חיים כמעט רגילים.",
+ q:"איך נגיף שתוקף את מערכת החיסון גורם לכך שזיהומים 'רגילים' נהיים מסוכנים?"},
+{y:"2000",n:2000,t:"מבנה הריבוזום ואנטיביוטיקה",e:"🧩",c:"gen",w:"עדה יונת",o:"Ada Yonath",pl:"מכון ויצמן, רחובות, ישראל",la:31.91,lo:34.8,
+ d:"אחרי עשרים שנות עבודה פענחה יונת את המבנה המדויק של הריבוזום, 'מפעל החלבונים' של התא, והראתה איך אנטיביוטיקות נקשרות אליו.",
+ why:"הידע עוזר לפתח אנטיביוטיקות חדשות. יונת קיבלה פרס נובל בכימיה ב-2009, האישה הישראלית הראשונה שזכתה בו.",
+ q:"יונת התמידה עשרים שנה, למרות שרבים פקפקו בה. מה עוזר לחוקר להתמיד?"},
+{y:"2001",n:2001,t:"מצלמה בגלולה – PillCam",e:"📷",c:"diag",w:"גבריאל עידן",o:"Gavriel Iddan",pl:"יוקנעם, ישראל",la:32.66,lo:35.11,
+ d:"עידן, מהנדס ישראלי, פיתח גלולה עם מצלמה זעירה שהמטופל בולע. היא מצלמת את מערכת העיכול ומשדרת את התמונות החוצה.",
+ why:"כך אפשר לראות את המעי הדק, שקשה מאוד להגיע אליו בבדיקה רגילה.",
+ q:"אילו יתרונות יש לגלולה על פני בדיקה בצינור? ואילו חסרונות?"},
+{y:"2001",n:2001.5,t:"גליבק – תרופה מכוונת לסרטן",e:"🎯",c:"drug",w:"בריאן דרוקר ונוברטיס",o:"Brian Druker & Novartis",pl:"באזל, שווייץ",la:47.56,lo:7.59,
+ d:"גליבק חוסם חלבון פגום שנמצא רק בתאי סוג מסוים של לוקמיה. התרופה אושרה ב-2001, והפכה מחלה קטלנית למחלה כרונית.",
+ why:"זו מהתרופות הראשונות שמכוונות לשינוי גנטי מסוים בתאי הסרטן, ולא פוגעות בכל תא שמתחלק.",
+ q:"מה ההבדל בין כימותרפיה רגילה לבין תרופה מכוונת?"},
+{y:"2003",n:2003,t:"פרויקט הגנום האנושי",e:"🗺️",c:"gen",w:"שיתוף פעולה בינלאומי",o:"Human Genome Project",pl:"בת׳סדה, ארה״ב (מרכז הפרויקט)",la:38.98,lo:-77.1,
+ d:"מדענים מכמה מדינות פענחו את רצף ה-DNA המלא של האדם: כ-3 מיליארד 'אותיות'. העבודה נמשכה 13 שנה.",
+ why:"מפת הגנום עוזרת לאבחן מחלות תורשתיות ולפתח רפואה מותאמת אישית.",
+ q:"האם הייתם רוצים לדעת מה כתוב בגנום שלכם? מה היתרונות, ומה החששות?"},
+{y:"2005 (חיסונים: 2020)",n:2005,t:"חיסוני mRNA",e:"💉",c:"inf",w:"קטלין קריקו ודרו וייסמן",o:"Katalin Karikó & Drew Weissman",pl:"פילדלפיה, ארה״ב",la:39.95,lo:-75.19,
+ d:"קריקו ווייסמן מצאו דרך לשנות את ה-mRNA כך שהגוף לא יתקוף אותו. ב-2020 השיטה אפשרה לפתח בתוך פחות משנה חיסונים נגד קורונה.",
+ why:"חיסון mRNA נותן לתאים 'מתכון' זמני לחלבון של הנגיף, ומלמד את מערכת החיסון לזהות אותו. הם קיבלו פרס נובל ב-2023.",
+ q:"איך ייתכן שחיסון פותח מהר כל כך? מה עזר לכך?"},
+{y:"2012",n:2012,t:"עריכה גנטית – CRISPR",e:"✂️",c:"gen",w:"ג׳ניפר דודנה ואמנואל שרפנטייה",o:"Jennifer Doudna & Emmanuelle Charpentier",pl:"ברקלי, ארה״ב",la:37.87,lo:-122.26,
+ d:"שתי החוקרות הראו שמערכת הגנה של חיידקים יכולה לשמש כ'מספריים' שחותכים DNA במקום מדויק, וכך לתקן או לשנות גנים.",
+ why:"השיטה כבר משמשת לטיפול באנמיה חרמשית. הן קיבלו פרס נובל בכימיה ב-2020.",
+ q:"האם מותר לשנות גנים של עוברים? איפה עובר הגבול לדעתכם?"}
+];
+
+(function(){
+"use strict";
+D.forEach(function(x,i){x.i=i;});
+var on={};Object.keys(TOPICS).forEach(function(k){on[k]=true;});
+var KN=[[0,-500],[150,1500],[330,1800],[540,1900],[700,1950],[1000,2025]];
+function s2y(v){for(var i=1;i<KN.length;i++)if(v<=KN[i][0]){var a=KN[i-1],b=KN[i];return a[1]+(v-a[0])/(b[0]-a[0])*(b[1]-a[1]);}return 2025;}
+function y2s(y){for(var i=1;i<KN.length;i++)if(y<=KN[i][1]){var a=KN[i-1],b=KN[i];return a[0]+(y-a[1])/(b[1]-a[1])*(b[0]-a[0]);}return 1000;}
+var maxY=2025,view="globe",cur=null,shown={},world=null;
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function vis(){return D.filter(function(x){return on[x.c]&&x.n<=maxY;});}
+function yLabel(y){y=Math.round(y);return y>=2025?"היום":y<0?(-y)+" לפנה״ס":String(y);}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove("show");},2200);}
+
+/* chips */
+var chips=$("chips"),h='<button class="chip all" data-t="*"><span class="dot"></span>הכול</button>';
+Object.keys(TOPICS).forEach(function(k){h+='<button class="chip" style="--c:'+TOPICS[k][1]+'" data-t="'+k+'" aria-pressed="true"><span class="dot"></span>'+TOPICS[k][0]+'</button>';});
+chips.innerHTML=h;
+chips.addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;var t=b.dataset.t;
+  var K=Object.keys(on),all=K.every(function(k){return on[k];});
+  if(t==="*")K.forEach(function(k){on[k]=true;});
+  else if(all)K.forEach(function(k){on[k]=k===t;});
+  else{on[t]=!on[t];if(!K.some(function(k){return on[k];}))K.forEach(function(k){on[k]=true;});}
+  chips.querySelectorAll(".chip[data-t]").forEach(function(c){if(c.dataset.t==="*")return;c.classList.toggle("off",!on[c.dataset.t]);c.setAttribute("aria-pressed",on[c.dataset.t]);});
+  refresh();});
+
+/* clustering */
+function clusters(list){var out=[],used={};var th=4.5;
+  list.forEach(function(a){if(used[a.i])return;var g=[a];used[a.i]=1;
+    list.forEach(function(b){if(used[b.i])return;if(Math.abs(a.la-b.la)<th&&Math.abs(a.lo-b.lo)<th){g.push(b);used[b.i]=1;}});
+    var la=g.reduce(function(s,x){return s+x.la;},0)/g.length,lo=g.reduce(function(s,x){return s+x.lo;},0)/g.length;
+    out.push({lat:la,lng:lo,g:g.sort(function(x,y){return x.n-y.n;})});});
+  return out;}
+function pinEl(c){var el=document.createElement("div");el.className="pw";var p=document.createElement("div");
+  if(c.g.length===1){var x=c.g[0];p.className="pin"+(shown[x.i]?"":" new");p.style.setProperty("--c",TOPICS[x.c][1]);p.textContent=x.e;p.title=x.y+" · "+x.t;p.setAttribute("aria-label",x.y+" "+x.t);p.onclick=function(){openCard(x.i);};}
+  else{p.className="pin cluster";p.dataset.e=c.g[0].e;p.textContent=c.g.length;p.title=c.g.map(function(x){return x.y+" "+x.t;}).join("\n");p.setAttribute("aria-label",c.g.length+" תגליות באזור");p.onclick=function(){openPick(c.g);};}
+  p.setAttribute("role","button");p.tabIndex=0;p.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();p.click();}};
+  c.g.forEach(function(x){shown[x.i]=1;});el.appendChild(p);return el;}
+
+function refresh(){
+  var v=vis();$("count").textContent=v.length+" מתוך "+D.length+" תגליות";$("yr").textContent=yLabel(maxY);
+  if(world)world.htmlElementsData(clusters(v));
+  if(view==="list")renderList(v);
+}
+function renderList(v){var L=$("list");v=v.slice().sort(function(a,b){return a.n-b.n;});
+  L.innerHTML=v.length?v.map(function(x){var yy=x.y.split(" (")[0];return '<li><button class="li" style="--c:'+TOPICS[x.c][1]+'" data-i="'+x.i+'"><span class="yr">'+esc(yy)+'</span><span class="em">'+x.e+'</span><span><span class="nm">'+esc(x.t)+'</span><span class="pl">'+esc(x.w)+' · '+esc(x.pl)+'</span></span></button></li>';}).join(""):'<li class="empty">אין תגליות בטווח הזה. הזיזו את ציר הזמן או בחרו נושאים נוספים.</li>';}
+$("list").addEventListener("click",function(e){var b=e.target.closest(".li");if(b)openCard(+b.dataset.i);});
+
+/* card */
+function closeCard(){$("sheet").hidden=true;document.body.classList.remove("sheet-open");cur=null;}
+function openPick(g){var s=$("sheetIn");s.innerHTML='<button class="close" aria-label="סגירה">✕</button><h3>'+g.length+' תגליות באזור הזה</h3><ul class="pick">'+g.map(function(x){return '<li><button class="li" style="--c:'+TOPICS[x.c][1]+'" data-i="'+x.i+'"><span class="yr">'+esc(x.y.split(" (")[0])+'</span><span class="em">'+x.e+'</span><span><span class="nm">'+esc(x.t)+'</span><span class="pl">'+esc(x.w)+'</span></span></button></li>';}).join("")+'</ul>';
+  $("sheet").hidden=false;document.body.classList.add("sheet-open");if(world)world.pointOfView({lat:g[0].la,lng:g[0].lo,altitude:1.2},800);}
+function openCard(i){var x=D[i];cur=i;var c=TOPICS[x.c];
+  var ord=vis().sort(function(a,b){return a.n-b.n;}),k=ord.indexOf(x);
+  $("sheetIn").innerHTML='<button class="close" aria-label="סגירה">✕</button><div class="c-top" style="--c:'+c[1]+'"><div class="c-em" style="--c:'+c[1]+'">'+x.e+'</div><div><h2>'+esc(x.t)+'</h2><span class="who">'+esc(x.w)+' <span class="orig">'+esc(x.o)+'</span></span></div></div>'+
+   '<div class="meta"><span class="tag">📅 '+esc(x.y)+'</span><span class="tag">📍 '+esc(x.pl)+'</span><span class="tag t" style="--c:'+c[1]+'">'+c[0]+'</span></div>'+
+   '<p class="d">'+esc(x.d)+'</p><div class="box why"><b>💡 למה זה חשוב?</b>'+esc(x.why)+'</div><div class="box q"><b>🗣️ שאלה לכיתה</b>'+esc(x.q)+'</div>'+
+   '<div class="c-foot"><span>'+(k>=0?(k+1)+" מתוך "+ord.length:"")+'</span><div class="nav2"><button data-nav="-1"'+(k<=0?" disabled":"")+'>→ הקודמת</button><button data-nav="1"'+(k<0||k>=ord.length-1?" disabled":"")+'>הבאה ←</button></div></div>';
+  $("sheet").hidden=false;document.body.classList.add("sheet-open");$("sheetIn").scrollTop=0;
+  if(world&&view==="globe")world.pointOfView({lat:x.la,lng:x.lo,altitude:1.5},900);}
+$("sheet").addEventListener("click",function(e){
+  if(e.target.closest(".close"))return closeCard();
+  var b=e.target.closest(".li");if(b)return openCard(+b.dataset.i);
+  var n=e.target.closest("[data-nav]");if(n&&cur!=null){var ord=vis().sort(function(a,b){return a.n-b.n;}),k=ord.indexOf(D[cur])+ +n.dataset.nav;if(ord[k])openCard(ord[k].i);}
+});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeCard();});
+
+/* view switch */
+function setView(v){view=v;$("vGlobe").classList.toggle("on",v==="globe");$("vList").classList.toggle("on",v==="list");$("vGlobe").setAttribute("aria-selected",v==="globe");$("vList").setAttribute("aria-selected",v==="list");
+  $("globeWrap").hidden=v!=="globe";$("listWrap").hidden=v!=="list";refresh();if(v==="globe")sizeGlobe();}
+$("vGlobe").onclick=function(){setView("globe");};$("vList").onclick=function(){setView("list");};
+$("rand").onclick=function(){var v=vis();if(!v.length)return;var x=v[Math.floor(Math.random()*v.length)];toast("🎲 "+x.t);openCard(x.i);};
+
+/* timeline */
+var sl=$("slider");
+sl.addEventListener("input",function(){maxY=s2y(+sl.value);refresh();});
+var playT=null;
+$("play").onclick=function(){var b=$("play");
+  if(playT){clearInterval(playT);playT=null;b.classList.remove("on");b.textContent="▶";return;}
+  closeCard();if(+sl.value>=1000)sl.value=0;b.classList.add("on");b.textContent="⏸";var last=vis().length;
+  playT=setInterval(function(){var v=Math.min(1000,+sl.value+6);sl.value=v;maxY=s2y(v);refresh();var now=vis();
+    if(now.length>last){var nw=now.filter(function(x){return x.n<=maxY;}).sort(function(a,b){return b.n-a.n;})[0];toast(nw.y.split(" (")[0]+" · "+nw.t);if(world)world.pointOfView({lat:nw.la,lng:nw.lo,altitude:2},700);}
+    last=now.length;if(v>=1000){clearInterval(playT);playT=null;b.classList.remove("on");b.textContent="▶";}},90);};
+
+/* globe */
+function sizeGlobe(){if(!world)return;var w=$("globeWrap");world.width(w.clientWidth).height(w.clientHeight);}
+function initGlobe(){
+  if(typeof Globe!=="function"){$("loading").textContent="הגלובוס לא נטען בדפדפן הזה. אפשר לעבור לציר הזמן 📋";setView("list");return;}
+  try{
+    world=Globe()($("globe")).globeImageUrl("globe/earth-day.jpg").backgroundColor("rgba(0,0,0,0)").showAtmosphere(true).atmosphereColor("#8ecfd6")
+      .htmlElement(pinEl).htmlTransitionDuration(0);
+    world.controls().autoRotate=true;world.controls().autoRotateSpeed=0.35;
+    world.pointOfView({lat:38,lng:20,altitude:2.3});
+    $("globe").addEventListener("pointerdown",function(){world.controls().autoRotate=false;});
+    sizeGlobe();window.addEventListener("resize",sizeGlobe);$("loading").remove();refresh();
+  }catch(err){$("loading").textContent="הגלובוס לא נטען בדפדפן הזה. אפשר לעבור לציר הזמן 📋";setView("list");}
+}
+refresh();initGlobe();
+})();
+
+</script></body></html>
