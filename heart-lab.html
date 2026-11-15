@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>דופק, תפוקת לב ולחץ דם</title><meta property="og:title" content="דופק, תפוקת לב ולחץ דם 🫀 דף עבודה · רפואה י׳">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+
+body { margin: 0px; font-family: Heebo, Arial, sans-serif; background: rgb(255, 240, 243); color: rgb(58, 13, 24); }
+
+.w { max-width: 680px; margin: 0px auto; padding: 16px 14px 50px; }
+
+h1 { color: rgb(176, 30, 60); text-align: center; margin: 4px 0px 0px; font-size: 28px; }
+
+.sub { text-align: center; color: rgb(122, 75, 85); margin-bottom: 12px; }
+
+.card { background: rgb(255, 255, 255); border-radius: 16px; padding: 14px 16px; margin: 12px 0px; box-shadow: rgba(176, 30, 60, 0.12) 0px 2px 10px; }
+
+h2 { color: rgb(176, 30, 60); margin: 0px 0px 6px; font-size: 21px; }
+
+p { margin: 6px 0px; line-height: 1.5; }
+
+.f { background: rgb(255, 230, 235); border-radius: 10px; padding: 8px 10px; font-weight: 700; text-align: center; margin: 8px 0px; }
+
+label { display: block; font-weight: 700; margin: 10px 0px 4px; }
+
+input, textarea { width: 100%; font: 16px Heebo; padding: 10px; border: 2px solid rgb(243, 194, 204); border-radius: 10px; background: rgb(255, 250, 251); }
+
+input:focus, textarea:focus { outline: none; border-color: rgb(176, 30, 60); }
+
+textarea { min-height: 64px; resize: vertical; }
+
+table { width: 100%; border-collapse: collapse; }
+
+td, th { padding: 6px 4px; text-align: center; border-bottom: 1px solid rgb(246, 213, 219); font-size: 15px; }
+
+th { color: rgb(122, 75, 85); font-size: 13px; }
+
+td input { text-align: center; padding: 8px 4px; }
+
+.res { font-weight: 900; color: rgb(176, 30, 60); font-size: 18px; }
+
+.ok { color: rgb(29, 122, 58); }
+
+.hint { color: rgb(122, 75, 85); font-size: 14px; }
+
+.btn { display: block; width: 100%; background: rgb(176, 30, 60); color: rgb(255, 255, 255); border: 0px; border-radius: 30px; padding: 14px; font: 700 18px Heebo; margin-top: 14px; cursor: pointer; }
+
+.mc button { display: block; width: 100%; text-align: right; margin: 6px 0px; padding: 10px 12px; border-radius: 10px; border: 2px solid rgb(243, 194, 204); background: rgb(255, 255, 255); font: 15px Heebo; cursor: pointer; }
+
+.mc button.y { background: rgb(217, 245, 223); border-color: rgb(58, 165, 90); }
+
+.mc button.n { background: rgb(255, 214, 220); border-color: rgb(224, 40, 63); }
+
+.saved { position: fixed; bottom: 10px; left: 10px; background: rgb(58, 165, 90); color: rgb(255, 255, 255); padding: 4px 10px; border-radius: 12px; font-size: 12px; opacity: 0; transition: 0.3s; }
+
+@media print {
+  .btn, .saved, .noprint { display: none !important; }
+  body { background: rgb(255, 255, 255); }
+  .card { box-shadow: none; border: 1px solid rgb(221, 221, 221); break-inside: avoid; }
+}
+.saved.on{opacity:1}
+.hint.bad{color:rgb(192,40,63)}.hint.ok{color:rgb(29,122,58);font-weight:700}
+</style>
+</head><body><div class="w">
+<h1>🫀 דופק, תפוקת לב ולחץ דם</h1><div class="sub">דף עבודה · רפואה י׳</div>
+<div class="card"><label>שם מלא</label><input id="name" data-k="" placeholder="השם שלך"></div>
+
+<div class="card"><h2>חלק א׳ · הדופק שלי</h2>
+<p>מודדים דופק בפרק כף היד או בצוואר <b>15 שניות</b>. רושמים את המספר, והחישוב לדקה נעשה לבד.</p>
+<table><tbody><tr><th>מצב</th><th>פעימות ב-15 שנ׳</th><th>פעימות לדקה</th></tr>
+<tr><td>במנוחה</td><td><input id="p0" type="number" inputmode="numeric" data-k=""></td><td class="res" id="b0">–</td></tr>
+<tr><td>מיד אחרי 30 שנ׳ קפיצות</td><td><input id="p1" type="number" inputmode="numeric" data-k=""></td><td class="res" id="b1">–</td></tr>
+<tr><td>אחרי דקה מנוחה</td><td><input id="p2" type="number" inputmode="numeric" data-k=""></td><td class="res" id="b2">–</td></tr></tbody></table>
+<svg id="g" direction="ltr" viewBox="0 0 320 190" style="width:100%;margin-top:10px"><line x1="30" x2="300" y1="170" y2="170" stroke="#f3d3da"></line><text x="2" y="174" font-size="10" fill="#7a4b55">40</text><line x1="30" x2="300" y1="134" y2="134" stroke="#f3d3da"></line><text x="2" y="138" font-size="10" fill="#7a4b55">80</text><line x1="30" x2="300" y1="98" y2="98" stroke="#f3d3da"></line><text x="2" y="102" font-size="10" fill="#7a4b55">120</text><line x1="30" x2="300" y1="62" y2="62" stroke="#f3d3da"></line><text x="2" y="66" font-size="10" fill="#7a4b55">160</text><line x1="30" x2="300" y1="26" y2="26" stroke="#f3d3da"></line><text x="2" y="30" font-size="10" fill="#7a4b55">200</text><text x="60" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">מנוחה</text><text x="160" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">אחרי מאמץ</text><text x="260" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">אחרי דקה</text></svg>
+<label>1. מה קרה לדופק אחרי המאמץ? למה לדעתך?</label><textarea id="q1" data-k=""></textarea>
+<label>2. האם הדופק חזר לערך המנוחה אחרי דקה? מה זה אומר?</label><textarea id="q2" data-k=""></textarea></div>
+
+<div class="card"><h2>חלק ב׳ · תפוקת הלב שלי</h2>
+<div class="f">תפוקת לב = דופק × נפח פעימה</div>
+<p>נפח פעימה ממוצע במנוחה: בערך <b>70 מ״ל</b> (0.07 ליטר).</p>
+<label>חשבי/חשב בעצמך: התפוקה שלי במנוחה (ליטר לדקה)</label><input id="co" type="number" step="0.01" inputmode="decimal" data-k=""><div id="cofb" class="hint">קודם מלאי/מלא את הדופק במנוחה למעלה</div>
+<p id="bott" class="hint"></p>
+<label>3. במאמץ גם נפח הפעימה גדל. מה זה אומר על התפוקה אחרי מאמץ?</label><textarea id="q3" data-k=""></textarea></div>
+
+<div class="card"><h2>חלק ג׳ · לחץ הדם</h2>
+<p>לחץ דם נכתב כשני מספרים, למשל <b>120/80</b>:<br>● עליון = <b>סיסטולי</b>: הלחץ בעורקים כשחדרי הלב מתכווצים.<br>● תחתון = <b>דיאסטולי</b>: הלחץ בעורקים כשהלב נח ומתמלא.</p>
+<p class="hint">מודדים מתנדב/ת אחד/ת מול הכיתה, וכולם רושמים את התוצאה:</p>
+<table><tbody><tr><th>סיסטולי (עליון)</th><th>דיאסטולי (תחתון)</th></tr><tr><td><input id="sy" type="number" inputmode="numeric" data-k=""></td><td><input id="di" type="number" inputmode="numeric" data-k=""></td></tr></tbody></table>
+<div id="bpfb" class="hint" style="margin-top:6px"></div>
+<label>4. בהדגמה עם הבלון: מה מייצג הרגע שלוחצים? ומה הרגע שמשחררים?</label><textarea id="q4" data-k=""></textarea></div>
+
+<div class="card"><h2>🎟 כרטיס יציאה</h2>
+<div class="mc" id="mc"><div><label>1. איזו שכבה של דופן הלב היא שריר שמתכווץ?</label><button data-i="0" data-j="0">אנדוקרד</button><button data-i="0" data-j="1">מיוקרד</button><button data-i="0" data-j="2">אפיקרד</button><button data-i="0" data-j="3">פריקרד סיבית</button></div><div><label>2. בבדיקה נמדד לחץ דם 130/85. מה מייצג 85?</label><button data-i="1" data-j="0">הדופק</button><button data-i="1" data-j="1">הלחץ כשהחדרים מתכווצים (סיסטולי)</button><button data-i="1" data-j="2">הלחץ כשהלב נח ומתמלא (דיאסטולי)</button><button data-i="1" data-j="3">נפח הפעימה</button></div></div>
+<label>3. הדופק של אדם הוא 80 ונפח הפעימה שלו 70 מ״ל. מה תפוקת הלב שלו (ליטר לדקה)?</label><input id="e3" type="number" step="0.01" inputmode="decimal" data-k=""><div id="e3fb" class="hint"></div></div>
+
+<button class="btn" id="pdf">📄 שמירה כ-PDF להגשה בקלאסרום</button>
+<p class="hint noprint" style="text-align:center">בחלון שנפתח בוחרים ״שמירה כ-PDF״ (או שיתוף ← שמירה בקבצים), ואת הקובץ מעלים למטלה בקלאסרום. התשובות נשמרות בטלפון גם אם סוגרים את הדף.</p>
+</div><div class="saved" id="sv">נשמר ✓</div>
+<script>
+(function(){
+"use strict";
+var KEY="heart-lab-v1",st={};
+function $(i){return document.getElementById(i);}
+try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){st={};}
+var sv=$("sv"),svT;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st));sv.textContent="נשמר ✓";}catch(e){sv.textContent="לא נשמר";}sv.classList.add("on");clearTimeout(svT);svT=setTimeout(function(){sv.classList.remove("on");},1200);}
+var F=["name","p0","p1","p2","q1","q2","co","q3","sy","di","q4","e3"];
+F.forEach(function(id){var el=$(id);if(st[id]!=null)el.value=st[id];el.addEventListener("input",function(){st[id]=el.value;save();upd();});});
+function num(id){var v=parseFloat(($(id).value||"").replace(",","."));return isFinite(v)?v:null;}
+function near(a,b,tol){return a!=null&&Math.abs(a-b)<=tol;}
+var NS="http://www.w3.org/2000/svg",bars=[];
+[60,160,260].forEach(function(x,i){var r=document.createElementNS(NS,"rect");r.setAttribute("x",x-28);r.setAttribute("width",56);r.setAttribute("rx",6);r.setAttribute("fill",["#e8798f","#b01e3c","#d9576f"][i]);r.setAttribute("y",170);r.setAttribute("height",0);
+  var t=document.createElementNS(NS,"text");t.setAttribute("x",x);t.setAttribute("text-anchor","middle");t.setAttribute("font-size","12");t.setAttribute("font-weight","700");t.setAttribute("fill","#3a0d18");
+  $("g").appendChild(r);$("g").appendChild(t);bars.push([r,t]);});
+function y(v){v=Math.max(40,Math.min(210,v));return 170-(v-40)*0.9;}
+function upd(){
+  for(var i=0;i<3;i++){var p=num("p"+i),b=p!=null&&p>0?Math.round(p*4):null;$("b"+i).textContent=b!=null?b:"–";
+    var r=bars[i][0],t=bars[i][1];if(b!=null){var yy=y(b);r.setAttribute("y",yy);r.setAttribute("height",170-yy);t.setAttribute("y",yy-4);t.textContent=b;}else{r.setAttribute("height",0);t.textContent="";}}
+  var b0=num("p0")!=null&&num("p0")>0?num("p0")*4:null,co=num("co"),fb=$("cofb"),bt=$("bott");
+  if(b0==null){fb.className="hint";fb.textContent="קודם מלאי/מלא את הדופק במנוחה למעלה";bt.textContent="";}
+  else{var ans=b0*0.07;
+    if(co==null){fb.className="hint";fb.textContent="הדופק שלך במנוחה: "+Math.round(b0)+" פעימות לדקה. כפלי/כפול ב-0.07 ליטר.";bt.textContent="";}
+    else if(near(co,ans,0.06)){fb.className="hint ok";fb.textContent="✓ נכון! "+Math.round(b0)+" × 0.07 = "+ans.toFixed(2)+" ליטר לדקה";bt.textContent="🍼 זה כמו "+(ans/1.5).toFixed(1)+" בקבוקים של 1.5 ליטר בכל דקה, ובערך "+Math.round(ans*60*24).toLocaleString("he-IL")+" ליטר ביממה!";}
+    else{fb.className="hint bad";fb.textContent="✗ לא בדיוק. בדקו: דופק לדקה × 0.07 ליטר (ולא 70 מ״ל).";bt.textContent="";}}
+  var s=num("sy"),d=num("di"),bp=$("bpfb");
+  if(s==null||d==null){bp.textContent="";}
+  else if(s<=d){bp.className="hint bad";bp.textContent="הסיסטולי (העליון) תמיד גבוה מהדיאסטולי. בדקו שלא התהפכו המספרים.";}
+  else{var c=s<90||d<60?"נמוך מהרגיל":(s<120&&d<80?"תקין":(s<130&&d<80?"מעט מוגבר":"גבוה מהרגיל"));bp.className="hint";bp.textContent="לחץ דם "+s+"/"+d+": "+c+" (לפי טווחים כלליים למבוגרים; אצל בני נוער הערכים מעט שונים). הפרש הלחצים (לחץ דופק): "+(s-d)+".";}
+  var e=num("e3"),ef=$("e3fb");
+  if(e==null){ef.textContent="";}else if(near(e,5.6,0.05)){ef.className="hint ok";ef.textContent="✓ נכון! 80 × 0.07 = 5.6 ליטר לדקה";}else{ef.className="hint bad";ef.textContent="✗ נסו שוב: דופק × נפח פעימה בליטרים (70 מ״ל = 0.07 ליטר).";}
+}
+var MC=[1,2];st.mc=st.mc||{};
+function mc(){document.querySelectorAll("#mc button").forEach(function(b){var i=+b.dataset.i,j=+b.dataset.j,ch=st.mc[i];b.className="";if(ch!=null&&ch===j)b.className=j===MC[i]?"y":"n";else if(ch!=null&&ch!==MC[i]&&j===MC[i])b.className="";});}
+$("mc").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st.mc[+b.dataset.i]=+b.dataset.j;mc();save();});
+$("pdf").addEventListener("click",function(){window.print();});
+upd();mc();
+})();
+</script>
+</body></html>
