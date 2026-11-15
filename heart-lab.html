@@ -58,6 +58,11 @@ td input { text-align: center; padding: 8px 4px; }
   .card { box-shadow: none; border: 1px solid rgb(221, 221, 221); break-inside: avoid; }
 }
 .saved.on{opacity:1}
+input.feel{padding:8px 6px;font-size:14px}
+.lay{display:grid;grid-template-columns:1fr 1fr;gap:8px}.lrow{display:flex;align-items:center;gap:6px}.lrow select{flex:1;font:15px Heebo;padding:8px;border:2px solid rgb(243,194,204);border-radius:10px;background:#fff}
+.lrow select.y{border-color:rgb(58,165,90);background:rgb(217,245,223)}.lrow select.n{border-color:rgb(224,40,63);background:rgb(255,214,220)}
+@media(max-width:420px){.lay{grid-template-columns:1fr}}
+th{font-size:12px}
 .hint.bad{color:rgb(192,40,63)}.hint.ok{color:rgb(29,122,58);font-weight:700}
 </style>
 </head><body><div class="w">
@@ -65,32 +70,38 @@ td input { text-align: center; padding: 8px 4px; }
 <div class="card"><label>שם מלא</label><input id="name" data-k="" placeholder="השם שלך"></div>
 
 <div class="card"><h2>חלק א׳ · הדופק שלי</h2>
-<p>מודדים דופק בפרק כף היד או בצוואר <b>15 שניות</b>. רושמים את המספר, והחישוב לדקה נעשה לבד.</p>
-<table><tbody><tr><th>מצב</th><th>פעימות ב-15 שנ׳</th><th>פעימות לדקה</th></tr>
-<tr><td>במנוחה</td><td><input id="p0" type="number" inputmode="numeric" data-k=""></td><td class="res" id="b0">–</td></tr>
-<tr><td>מיד אחרי 30 שנ׳ קפיצות</td><td><input id="p1" type="number" inputmode="numeric" data-k=""></td><td class="res" id="b1">–</td></tr>
-<tr><td>אחרי דקה מנוחה</td><td><input id="p2" type="number" inputmode="numeric" data-k=""></td><td class="res" id="b2">–</td></tr></tbody></table>
-<svg id="g" direction="ltr" viewBox="0 0 320 190" style="width:100%;margin-top:10px"><line x1="30" x2="300" y1="170" y2="170" stroke="#f3d3da"></line><text x="2" y="174" font-size="10" fill="#7a4b55">40</text><line x1="30" x2="300" y1="134" y2="134" stroke="#f3d3da"></line><text x="2" y="138" font-size="10" fill="#7a4b55">80</text><line x1="30" x2="300" y1="98" y2="98" stroke="#f3d3da"></line><text x="2" y="102" font-size="10" fill="#7a4b55">120</text><line x1="30" x2="300" y1="62" y2="62" stroke="#f3d3da"></line><text x="2" y="66" font-size="10" fill="#7a4b55">160</text><line x1="30" x2="300" y1="26" y2="26" stroke="#f3d3da"></line><text x="2" y="30" font-size="10" fill="#7a4b55">200</text><text x="60" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">מנוחה</text><text x="160" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">אחרי מאמץ</text><text x="260" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">אחרי דקה</text></svg>
-<label>1. מה קרה לדופק אחרי המאמץ? למה לדעתך?</label><textarea id="q1" data-k=""></textarea>
-<label>2. האם הדופק חזר לערך המנוחה אחרי דקה? מה זה אומר?</label><textarea id="q2" data-k=""></textarea></div>
+<p>מודדים דופק בפרק כף היד או בצוואר במשך <b>15 שניות</b>, וכופלים ב-4 כדי לקבל פעימות לדקה. רושמים את המספר, והחישוב לדקה נעשה לבד.</p>
+<table><tbody><tr><th>מצב</th><th>פעימות ב-15 שנ׳</th><th>× 4 = פעימות לדקה</th><th>איך הרגשתי?</th></tr>
+<tr><td>במנוחה</td><td><input id="p0" type="number" inputmode="numeric"></td><td class="res" id="b0">–</td><td><input id="f0" class="feel"></td></tr>
+<tr><td>מיד אחרי 30 שנ׳ קפיצות</td><td><input id="p1" type="number" inputmode="numeric"></td><td class="res" id="b1">–</td><td><input id="f1" class="feel"></td></tr>
+<tr><td>אחרי דקה מנוחה</td><td><input id="p2" type="number" inputmode="numeric"></td><td class="res" id="b2">–</td><td><input id="f2" class="feel"></td></tr></tbody></table>
+<p class="hint">הגרף נבנה לבד מהתוצאות שלך:</p>
+<svg id="g" direction="ltr" viewBox="0 0 320 190" style="width:100%;margin-top:4px"><line x1="30" x2="300" y1="170" y2="170" stroke="#f3d3da"></line><text x="2" y="174" font-size="10" fill="#7a4b55">40</text><line x1="30" x2="300" y1="134" y2="134" stroke="#f3d3da"></line><text x="2" y="138" font-size="10" fill="#7a4b55">80</text><line x1="30" x2="300" y1="98" y2="98" stroke="#f3d3da"></line><text x="2" y="102" font-size="10" fill="#7a4b55">120</text><line x1="30" x2="300" y1="62" y2="62" stroke="#f3d3da"></line><text x="2" y="66" font-size="10" fill="#7a4b55">160</text><line x1="30" x2="300" y1="26" y2="26" stroke="#f3d3da"></line><text x="2" y="30" font-size="10" fill="#7a4b55">200</text><text x="60" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">מנוחה</text><text x="160" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">אחרי מאמץ</text><text x="260" y="187" font-size="11" text-anchor="middle" fill="#3a0d18">אחרי דקה</text></svg>
+<label>1. מה קרה לדופק אחרי המאמץ? למה לדעתך?</label><textarea id="q1"></textarea>
+<label>2. כמה זמן לקח לדופק לחזור לערך המנוחה?</label><textarea id="q2"></textarea></div>
 
 <div class="card"><h2>חלק ב׳ · תפוקת הלב שלי</h2>
-<div class="f">תפוקת לב = דופק × נפח פעימה</div>
+<div class="f">תפוקת לב = דופק (פעימות לדקה) × נפח פעימה (כמה דם יוצא בכל פעימה)</div>
 <p>נפח פעימה ממוצע במנוחה: בערך <b>70 מ״ל</b> (0.07 ליטר).</p>
-<label>חשבי/חשב בעצמך: התפוקה שלי במנוחה (ליטר לדקה)</label><input id="co" type="number" step="0.01" inputmode="decimal" data-k=""><div id="cofb" class="hint">קודם מלאי/מלא את הדופק במנוחה למעלה</div>
-<p id="bott" class="hint"></p>
-<label>3. במאמץ גם נפח הפעימה גדל. מה זה אומר על התפוקה אחרי מאמץ?</label><textarea id="q3" data-k=""></textarea></div>
+<label>התפוקה שלי במנוחה (ליטר לדקה)</label><input id="co" type="number" step="0.01" inputmode="decimal"><div id="cofb" class="hint"></div>
+<label>התפוקה שלי אחרי מאמץ (ליטר לדקה)</label><input id="co2" type="number" step="0.01" inputmode="decimal"><div id="co2fb" class="hint"></div>
+<label>כמה בקבוקי מים של 1.5 ליטר הלב שלי שואב בדקה במנוחה? ובשעה?</label>
+<table><tbody><tr><th>בדקה</th><th>בשעה</th></tr><tr><td><input id="bm" type="number" step="0.1" inputmode="decimal"></td><td><input id="bh" type="number" step="1" inputmode="decimal"></td></tr></tbody></table>
+<div id="bfb" class="hint"></div>
+<label>3. במאמץ גם נפח הפעימה גדל. מה זה אומר על התפוקה אחרי מאמץ?</label><textarea id="q3"></textarea></div>
 
 <div class="card"><h2>חלק ג׳ · לחץ הדם</h2>
-<p>לחץ דם נכתב כשני מספרים, למשל <b>120/80</b>:<br>● עליון = <b>סיסטולי</b>: הלחץ בעורקים כשחדרי הלב מתכווצים.<br>● תחתון = <b>דיאסטולי</b>: הלחץ בעורקים כשהלב נח ומתמלא.</p>
-<p class="hint">מודדים מתנדב/ת אחד/ת מול הכיתה, וכולם רושמים את התוצאה:</p>
-<table><tbody><tr><th>סיסטולי (עליון)</th><th>דיאסטולי (תחתון)</th></tr><tr><td><input id="sy" type="number" inputmode="numeric" data-k=""></td><td><input id="di" type="number" inputmode="numeric" data-k=""></td></tr></tbody></table>
+<p>לחץ דם נכתב כשני מספרים, למשל <b>120/80</b>:<br>● המספר העליון = <b>לחץ סיסטולי</b>: הלחץ בעורקים כשחדרי הלב מתכווצים.<br>● המספר התחתון = <b>לחץ דיאסטולי</b>: הלחץ בעורקים כשהלב נח ומתמלא.</p>
+<table><tbody><tr><th></th><th>לחץ סיסטולי (עליון)</th><th>לחץ דיאסטולי (תחתון)</th></tr><tr><td><b>המדידה שלי / של בן הזוג</b></td><td><input id="sy" type="number" inputmode="numeric"></td><td><input id="di" type="number" inputmode="numeric"></td></tr></tbody></table>
 <div id="bpfb" class="hint" style="margin-top:6px"></div>
-<label>4. בהדגמה עם הבלון: מה מייצג הרגע שלוחצים? ומה הרגע שמשחררים?</label><textarea id="q4" data-k=""></textarea></div>
+<label>4. בהדגמה עם הבלון: מה מייצג הרגע שלוחצים? ומה הרגע שמשחררים?</label><textarea id="q4"></textarea></div>
 
 <div class="card"><h2>🎟 כרטיס יציאה</h2>
-<div class="mc" id="mc"><div><label>1. איזו שכבה של דופן הלב היא שריר שמתכווץ?</label><button data-i="0" data-j="0">אנדוקרד</button><button data-i="0" data-j="1">מיוקרד</button><button data-i="0" data-j="2">אפיקרד</button><button data-i="0" data-j="3">פריקרד סיבית</button></div><div><label>2. בבדיקה נמדד לחץ דם 130/85. מה מייצג 85?</label><button data-i="1" data-j="0">הדופק</button><button data-i="1" data-j="1">הלחץ כשהחדרים מתכווצים (סיסטולי)</button><button data-i="1" data-j="2">הלחץ כשהלב נח ומתמלא (דיאסטולי)</button><button data-i="1" data-j="3">נפח הפעימה</button></div></div>
-<label>3. הדופק של אדם הוא 80 ונפח הפעימה שלו 70 מ״ל. מה תפוקת הלב שלו (ליטר לדקה)?</label><input id="e3" type="number" step="0.01" inputmode="decimal" data-k=""><div id="e3fb" class="hint"></div></div>
+<label>1. סדרי/סדר את שכבות הלב מבפנים החוצה: מיוקרד · פריקרד סיבית · אנדוקרד · חלל הפריקרד · אפיקרד · פריקרד דופנית</label>
+<div class="lay" id="lay"></div><div id="layfb" class="hint"></div>
+<label>2. הדופק של אדם הוא 80 ונפח הפעימה שלו 70 מ״ל. מה תפוקת הלב שלו (ליטר לדקה)?</label><input id="e3" type="number" step="0.01" inputmode="decimal"><div id="e3fb" class="hint"></div>
+<div class="mc" id="mc"><div><label>3. בבדיקה נמדד לחץ דם 130/85. מה המספר 85 מייצג?</label><button data-i="1" data-j="0">הדופק</button><button data-i="1" data-j="1">הלחץ כשהחדרים מתכווצים (סיסטולי)</button><button data-i="1" data-j="2">הלחץ כשהלב נח ומתמלא (דיאסטולי)</button><button data-i="1" data-j="3">נפח הפעימה</button></div></div>
+</div>
 
 <button class="btn" id="pdf">📄 שמירה כ-PDF להגשה בקלאסרום</button>
 <p class="hint noprint" style="text-align:center">בחלון שנפתח בוחרים ״שמירה כ-PDF״ (או שיתוף ← שמירה בקבצים), ואת הקובץ מעלים למטלה בקלאסרום. התשובות נשמרות בטלפון גם אם סוגרים את הדף.</p>
@@ -103,8 +114,10 @@ function $(i){return document.getElementById(i);}
 try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){st={};}
 var sv=$("sv"),svT;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st));sv.textContent="נשמר ✓";}catch(e){sv.textContent="לא נשמר";}sv.classList.add("on");clearTimeout(svT);svT=setTimeout(function(){sv.classList.remove("on");},1200);}
-var F=["name","p0","p1","p2","q1","q2","co","q3","sy","di","q4","e3"];
-F.forEach(function(id){var el=$(id);if(st[id]!=null)el.value=st[id];el.addEventListener("input",function(){st[id]=el.value;save();upd();});});
+var F=["name","p0","p1","p2","f0","f1","f2","q1","q2","co","co2","bm","bh","q3","sy","di","q4","e3","l0","l1","l2","l3","l4","l5"];
+var LAY=["אנדוקרד","מיוקרד","אפיקרד","חלל הפריקרד","פריקרד דופנית","פריקרד סיבית"],OPT=["מיוקרד","פריקרד סיבית","אנדוקרד","חלל הפריקרד","אפיקרד","פריקרד דופנית"];
+(function(){var h="";for(var i=0;i<6;i++)h+='<div class="lrow"><span>'+(i+1)+')</span><select id="l'+i+'"><option value="">בחרו…</option>'+OPT.map(function(o){return "<option>"+o+"</option>";}).join("")+'</select></div>';$("lay").innerHTML=h;})();
+F.forEach(function(id){var el=$(id);if(st[id]!=null)el.value=st[id];el.addEventListener(el.tagName==="SELECT"?"change":"input",function(){st[id]=el.value;save();upd();});});
 function num(id){var v=parseFloat(($(id).value||"").replace(",","."));return isFinite(v)?v:null;}
 function near(a,b,tol){return a!=null&&Math.abs(a-b)<=tol;}
 var NS="http://www.w3.org/2000/svg",bars=[];
@@ -115,20 +128,29 @@ function y(v){v=Math.max(40,Math.min(210,v));return 170-(v-40)*0.9;}
 function upd(){
   for(var i=0;i<3;i++){var p=num("p"+i),b=p!=null&&p>0?Math.round(p*4):null;$("b"+i).textContent=b!=null?b:"–";
     var r=bars[i][0],t=bars[i][1];if(b!=null){var yy=y(b);r.setAttribute("y",yy);r.setAttribute("height",170-yy);t.setAttribute("y",yy-4);t.textContent=b;}else{r.setAttribute("height",0);t.textContent="";}}
-  var b0=num("p0")!=null&&num("p0")>0?num("p0")*4:null,co=num("co"),fb=$("cofb"),bt=$("bott");
-  if(b0==null){fb.className="hint";fb.textContent="קודם מלאי/מלא את הדופק במנוחה למעלה";bt.textContent="";}
-  else{var ans=b0*0.07;
-    if(co==null){fb.className="hint";fb.textContent="הדופק שלך במנוחה: "+Math.round(b0)+" פעימות לדקה. כפלי/כפול ב-0.07 ליטר.";bt.textContent="";}
-    else if(near(co,ans,0.06)){fb.className="hint ok";fb.textContent="✓ נכון! "+Math.round(b0)+" × 0.07 = "+ans.toFixed(2)+" ליטר לדקה";bt.textContent="🍼 זה כמו "+(ans/1.5).toFixed(1)+" בקבוקים של 1.5 ליטר בכל דקה, ובערך "+Math.round(ans*60*24).toLocaleString("he-IL")+" ליטר ביממה!";}
-    else{fb.className="hint bad";fb.textContent="✗ לא בדיוק. בדקו: דופק לדקה × 0.07 ליטר (ולא 70 מ״ל).";bt.textContent="";}}
+  var b0=num("p0")!=null&&num("p0")>0?num("p0")*4:null,b1=num("p1")!=null&&num("p1")>0?num("p1")*4:null;
+  function chk(inp,fbid,bpm,label){var v=num(inp),fb=$(fbid);
+    if(bpm==null){fb.className="hint";fb.textContent="קודם מלאי/מלא את הדופק "+label+" בחלק א׳";return false;}
+    var ans=bpm*0.07;
+    if(v==null){fb.className="hint";fb.textContent=Math.round(bpm)+" × 0.07 = ___";return false;}
+    if(near(v,ans,0.06)){fb.className="hint ok";fb.textContent="✓ נכון! "+Math.round(bpm)+" × 0.07 = "+ans.toFixed(2)+" ליטר לדקה";return true;}
+    fb.className="hint bad";fb.textContent="✗ לא בדיוק. בדקו: דופק לדקה × 0.07 ליטר (ולא 70 מ״ל).";return false;}
+  chk("co","cofb",b0,"במנוחה");chk("co2","co2fb",b1,"אחרי המאמץ");
+  var bm=num("bm"),bh=num("bh"),bf=$("bfb");
+  if(b0==null||(bm==null&&bh==null)){bf.className="hint";bf.textContent=b0==null?"":"רמז: תפוקה במנוחה ÷ 1.5 = בקבוקים בדקה. ובשעה: כפול 60.";}
+  else{var m=b0*0.07/1.5,hr=m*60,okm=bm!=null&&near(bm,m,0.15),okh=bh!=null&&Math.abs(bh-hr)<=Math.max(5,hr*0.05);
+    bf.className="hint "+(okm&&okh?"ok":(bm!=null&&!okm)||(bh!=null&&!okh)?"bad":"");
+    bf.textContent=(bm!=null?(okm?"✓ בדקה: נכון ("+m.toFixed(1)+")":"✗ בדקה: תפוקה במנוחה ÷ 1.5"):"")+(bm!=null&&bh!=null?" · ":"")+(bh!=null?(okh?"✓ בשעה: נכון (בערך "+Math.round(hr)+")":"✗ בשעה: בקבוקים בדקה × 60"):"");}
   var s=num("sy"),d=num("di"),bp=$("bpfb");
   if(s==null||d==null){bp.textContent="";}
   else if(s<=d){bp.className="hint bad";bp.textContent="הסיסטולי (העליון) תמיד גבוה מהדיאסטולי. בדקו שלא התהפכו המספרים.";}
   else{var c=s<90||d<60?"נמוך מהרגיל":(s<120&&d<80?"תקין":(s<130&&d<80?"מעט מוגבר":"גבוה מהרגיל"));bp.className="hint";bp.textContent="לחץ דם "+s+"/"+d+": "+c+" (לפי טווחים כלליים למבוגרים; אצל בני נוער הערכים מעט שונים). הפרש הלחצים (לחץ דופק): "+(s-d)+".";}
+  var got=0,filled=0;for(var i=0;i<6;i++){var sl=$("l"+i);sl.className="";if(sl.value){filled++;if(sl.value===LAY[i]){got++;sl.className="y";}else sl.className="n";}}
+  var lf=$("layfb");lf.className="hint"+(got===6?" ok":"");lf.textContent=filled?(got===6?"✓ מצוין! הסדר נכון":got+" מתוך 6 במקום הנכון"):"";
   var e=num("e3"),ef=$("e3fb");
   if(e==null){ef.textContent="";}else if(near(e,5.6,0.05)){ef.className="hint ok";ef.textContent="✓ נכון! 80 × 0.07 = 5.6 ליטר לדקה";}else{ef.className="hint bad";ef.textContent="✗ נסו שוב: דופק × נפח פעימה בליטרים (70 מ״ל = 0.07 ליטר).";}
 }
-var MC=[1,2];st.mc=st.mc||{};
+var MC=[null,2];st.mc=st.mc||{};
 function mc(){document.querySelectorAll("#mc button").forEach(function(b){var i=+b.dataset.i,j=+b.dataset.j,ch=st.mc[i];b.className="";if(ch!=null&&ch===j)b.className=j===MC[i]?"y":"n";else if(ch!=null&&ch!==MC[i]&&j===MC[i])b.className="";});}
 $("mc").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st.mc[+b.dataset.i]=+b.dataset.j;mc();save();});
 $("pdf").addEventListener("click",function(){window.print();});
