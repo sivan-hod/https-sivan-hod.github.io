@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>שכבות הלב · אתגר</title><meta property="og:title" content="שכבות הלב · אתגר כיתתי 🫀">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body { margin: 0px; font-family: Heebo, Arial, sans-serif; background: linear-gradient(160deg, rgb(255, 240, 243), rgb(255, 225, 231)); color: rgb(58, 13, 24); min-height: 100vh; }
+
+.w { max-width: 720px; margin: 0px auto; padding: 18px 14px 40px; }
+
+h1 { font-size: 28px; margin: 6px 0px 2px; color: rgb(176, 30, 60); text-align: center; }
+
+.sub { text-align: center; color: rgb(122, 75, 85); margin-bottom: 14px; }
+
+.bar { display: flex; justify-content: space-between; background: rgb(255, 255, 255); border-radius: 14px; padding: 10px 14px; box-shadow: rgba(176, 30, 60, 0.133) 0px 2px 8px; margin-bottom: 14px; font-weight: 700; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.col { display: flex; flex-direction: column; gap: 10px; }
+
+.c { background: rgb(255, 255, 255); border: 2px solid rgb(243, 194, 204); border-radius: 14px; padding: 12px; cursor: pointer; transition: 0.15s; user-select: none; font-size: 15px; line-height: 1.35; min-height: 64px; display: flex; align-items: center; justify-content: center; text-align: center; }
+
+.c.n { font-weight: 900; font-size: 19px; color: rgb(176, 30, 60); }
+
+.c.sel { border-color: rgb(176, 30, 60); background: rgb(255, 230, 235); transform: scale(1.03); }
+
+.c.ok { background: rgb(217, 245, 223); border-color: rgb(58, 165, 90); color: rgb(29, 92, 46); cursor: default; }
+
+.c.bad { animation: 0.35s ease 0s 1 normal none running sh; border-color: rgb(224, 40, 63); background: rgb(255, 214, 220); }
+
+@keyframes sh { 
+  25% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+}
+
+.btn { display: block; margin: 18px auto 0px; background: rgb(176, 30, 60); color: rgb(255, 255, 255); border: 0px; border-radius: 30px; padding: 14px 30px; font: 700 18px Heebo; cursor: pointer; }
+
+.heart { position: relative; width: 280px; height: 280px; margin: 10px auto; }
+
+.ring { position: absolute; border-radius: 50%; display: flex; align-items: flex-start; justify-content: center; font-size: 11px; font-weight: 700; color: transparent; padding-top: 3px; transition: 0.4s; background: rgb(246, 233, 236); border: 1.5px dashed rgb(227, 185, 194); }
+
+.ring.on { background: var(--c); color: rgb(255, 255, 255); border: 1.5px solid rgb(255, 255, 255); }
+
+.order { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+.order .c { min-height: 48px; flex: 1 1 40%; }
+
+.done { text-align: center; font-size: 20px; }
+
+.big { font-size: 44px; font-weight: 900; color: rgb(176, 30, 60); }
+
+.hide { display: none; }
+
+.tip { font-size: 14px; color: rgb(122, 75, 85); text-align: center; margin-top: 8px; }
+.ring{font-size:10px}
+</style></head><body><div class="w">
+<h1>🫀 שכבות הלב · אתגר</h1><div class="sub" id="sub">שלב 1 מתוך 2: התאימו כל שכבה לתיאור שלה</div>
+<div class="bar"><span>⏱ <span id="t">0</span> שנ׳</span><span>❌ טעויות: <span id="m">0</span></span><span>✅ <span id="s">0</span>/6</span></div>
+<div id="p1"><div class="tip">הקישו על שם שכבה ואז על התיאור המתאים</div><br><div class="grid"><div class="col" id="names"></div><div class="col" id="descs"></div></div></div>
+<div id="p2" class="hide"><div class="tip">הקישו על השכבות לפי הסדר: מהפנימית ביותר (ליד הדם) ועד החיצונית ביותר</div>
+<div class="heart" id="heart"></div><div class="order" id="ord"></div></div>
+<div id="p3" class="hide done"><div>🎉 כל הכבוד!</div><div class="big" id="ft"></div><div>שניות · <span id="fm"></span> טעויות</div><div class="tip">הראו את המסך למורה 🙂</div><button class="btn" id="again">שוב!</button></div>
+</div>
+<script>
+(function(){
+"use strict";
+/* index = order from inside (0) to outside (5) */
+var L=[
+ {n:"אנדוקרד",d:"השכבה הפנימית ביותר. מצפה את חללי הלב ואת המסתמים, ונוגעת בדם",c:"#e8798f"},
+ {n:"מיוקרד",d:"שריר הלב. השכבה העבה ביותר, והיא זו שמתכווצת ומזרימה את הדם",c:"#b01e3c"},
+ {n:"אפיקרד",d:"השכבה החיצונית של דופן הלב (הפריקרד הצמודה). בה עוברים כלי הדם הכליליים",c:"#d9576f"},
+ {n:"חלל הפריקרד",d:"רווח דק עם מעט נוזל, שמאפשר ללב לפעום בלי חיכוך",c:"#7fb6d9"},
+ {n:"פריקרד דופנית",d:"השכבה הסרוזית שמצפה את הפריקרד הסיבית מבפנים",c:"#c99a5b"},
+ {n:"פריקרד סיבית",d:"השק החיצוני, חזק וקשיח. מגן על הלב ומעגן אותו במקומו",c:"#8a5a2b"}
+];
+function $(i){return document.getElementById(i);}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+var t0,timer,miss,score,sel,next;
+function tick(){$("t").textContent=Math.floor((Date.now()-t0)/1000);}
+function card(cls,i,txt){var d=document.createElement("div");d.className="c "+cls;d.dataset.i=i;d.textContent=txt;d.setAttribute("role","button");d.tabIndex=0;return d;}
+function bad(el){miss++;$("m").textContent=miss;el.classList.remove("bad");void el.offsetWidth;el.classList.add("bad");}
+function start(){
+  miss=0;score=0;sel=null;next=0;$("m").textContent=0;$("s").textContent=0;$("t").textContent=0;
+  $("p1").classList.remove("hide");$("p2").classList.add("hide");$("p3").classList.add("hide");
+  $("sub").textContent="שלב 1 מתוך 2: התאימו כל שכבה לתיאור שלה";
+  var N=$("names"),D=$("descs");N.innerHTML="";D.innerHTML="";
+  shuf([0,1,2,3,4,5]).forEach(function(i){N.appendChild(card("n",i,L[i].n));});
+  shuf([0,1,2,3,4,5]).forEach(function(i){D.appendChild(card("d",i,L[i].d));});
+  clearInterval(timer);t0=Date.now();timer=setInterval(tick,250);
+}
+$("names").addEventListener("click",function(e){var c=e.target.closest(".c");if(!c||c.classList.contains("ok"))return;
+  if(sel)sel.classList.remove("sel");sel=c;c.classList.add("sel");});
+$("descs").addEventListener("click",function(e){var c=e.target.closest(".c");if(!c||c.classList.contains("ok"))return;
+  if(!sel){bad(c);return;}
+  if(sel.dataset.i===c.dataset.i){sel.classList.remove("sel");sel.classList.add("ok");c.classList.add("ok");sel=null;score++;$("s").textContent=score;if(score===6)setTimeout(phase2,500);}
+  else{bad(c);bad(sel);miss--;$("m").textContent=miss;}
+});
+function phase2(){
+  $("p1").classList.add("hide");$("p2").classList.remove("hide");$("sub").textContent="שלב 2 מתוך 2: סדרו את השכבות מבפנים החוצה";
+  $("s").textContent="0";next=0;
+  var H=$("heart");H.innerHTML="";
+  for(var i=5;i>=0;i--){var r=document.createElement("div");r.className="ring";r.id="r"+i;var sz=80+i*40;
+    r.style.width=sz+"px";r.style.height=sz+"px";r.style.left=(280-sz)/2+"px";r.style.top=(280-sz)/2+"px";r.style.setProperty("--c",L[i].c);r.textContent=L[i].n;H.appendChild(r);}
+  var O=$("ord");O.innerHTML="";shuf([0,1,2,3,4,5]).forEach(function(i){O.appendChild(card("n",i,L[i].n));});
+}
+$("ord").addEventListener("click",function(e){var c=e.target.closest(".c");if(!c||c.classList.contains("ok"))return;
+  if(+c.dataset.i===next){c.classList.add("ok");$("r"+next).classList.add("on");next++;$("s").textContent=next;if(next===6)setTimeout(done,700);}
+  else bad(c);
+});
+function done(){clearInterval(timer);tick();$("p2").classList.add("hide");$("p3").classList.remove("hide");$("sub").textContent="סיימתם את שני השלבים";
+  $("ft").textContent=$("t").textContent;$("fm").textContent=miss;}
+document.addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("c")){e.preventDefault();e.target.click();}});
+$("again").addEventListener("click",start);
+start();
+})();
+</script>
+</body></html>
