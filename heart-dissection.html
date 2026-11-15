@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>נתיחת לב חזיר — דף עבודה אינטראקטיבי</title>
+<meta name="description" content="מגמת רפואה · שכבה י׳ · שלבי הנתיחה עם סרטון לכל שלב, טבלת מדידות ושאלות סיכום. התשובות נשמרות אוטומטית.">
+<meta property="og:title" content="🫀 נתיחת לב חזיר — דף עבודה">
+<meta property="og:description" content="מגמת רפואה · שכבה י׳ · התשובות נשמרות אוטומטית">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7ecee">
+<link rel="icon" href="data:,">
+<style>
+:root { --page: #fbfaf9; --card: #ffffff; --ink: #251f21; --ink2: #585254; --muted: #8f8a8c; --hair: #eae9ea; --hero: #f7ecee; --teal: #73a89a; --ink3: #969394; --info: #eef2f8; --info-b: #c9d3e3; --warn: #fbf3e6; --warn-b: #ecd5ad; --ok: #edf6ef; --ok-b: #bfdcc6; --good: #1f7a45; --good-bg: #e6f4ea; --bad: #b3261e; --bad-bg: #fbe9e7; }
+
+* { box-sizing: border-box; }
+
+html { text-size-adjust: 100%; }
+
+body { margin: 0px; background: var(--page); color: var(--ink); font: 17px / 1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Rubik, Assistant, Heebo, Arial, sans-serif; }
+
+.page { max-width: 720px; margin: 0px auto; padding: 0px 16px 110px; }
+
+.hero { background: var(--hero); margin: 0px -16px; padding: 40px 20px 30px; border-radius: 0px 0px 22px 22px; }
+
+@media (min-width: 752px) {
+  .hero { margin: 16px 0px 0px; border-radius: 22px; }
+}
+
+.hero h1 { font-size: 30px; line-height: 1.2; margin: 0px 0px 10px; font-weight: 750; letter-spacing: -0.01em; }
+
+.fact { margin: 0px 0px 12px; color: var(--ink2); font-size: 15px; font-weight: 600; }
+
+.intro { margin: 0px; color: var(--ink); font-size: 17px; }
+
+.figure { margin: 22px 0px 6px; }
+
+.figure img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block; border-radius: 16px; background: var(--hair); }
+
+.figure figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
+
+.section { margin-top: 34px; }
+
+.section-label { font-size: 21px; line-height: 1.3; margin: 0px 0px 12px; font-weight: 700; }
+
+.para { margin: 0px 0px 12px; color: var(--ink); }
+
+.small { font-size: 14px; color: var(--ink2); margin: 6px 0px 0px; }
+
+.callout { border: 1px solid var(--info-b); background: var(--info); border-radius: 14px; padding: 12px 14px; margin: 0px 0px 10px; }
+
+.callout.warn { background: var(--warn); border-color: var(--warn-b); }
+
+.callout.ok { background: var(--ok); border-color: var(--ok-b); }
+
+.callout p { margin: 0px; font-size: 15.5px; }
+
+.callout .callout-title { font-weight: 700; margin-bottom: 3px; }
+
+.q-box { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 16px; margin: 0px 0px 12px; }
+
+.q-text { margin: 0px 0px 10px; }
+
+.ext-link { color: var(--ink); font-weight: 650; text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+
+.q-answer { width: 100%; min-height: 130px; resize: vertical; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 16px; line-height: 1.55; color: var(--ink); background: rgb(255, 255, 255); border: 1px solid rgb(214, 211, 212); border-radius: 12px; padding: 10px 12px; margin: 0px 0px 10px; direction: rtl; }
+
+.q-answer:focus, .name-input:focus { outline: 2px solid var(--ink); outline-offset: 1px; border-color: transparent; }
+
+.btn { font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 15.5px; font-weight: 650; border-radius: 999px; padding: 10px 18px; border: 1px solid var(--ink); cursor: pointer; min-height: 44px; -webkit-tap-highlight-color: transparent; }
+
+.btn.primary { background: var(--ink); color: rgb(255, 255, 255); }
+
+.btn.secondary { background: rgb(255, 255, 255); color: var(--ink); border-color: rgb(207, 204, 205); }
+
+.btn.compact { margin-top: 4px; }
+
+.btn:disabled { opacity: 0.6; }
+
+.linkbtn { background: none; border: 0px; padding: 6px 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 14px; color: var(--ink2); text-decoration: underline; cursor: pointer; }
+
+.mcq-letters { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.mcq-letter { font-style: inherit; font-variant: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 18px; font-weight: 600; min-width: 58px; min-height: 48px; border-radius: 10px; border: 1.5px solid rgb(208, 208, 216); background: rgb(255, 255, 255); color: var(--ink); cursor: pointer; padding: 6px 12px; }
+
+.mcq-letter:disabled { cursor: default; opacity: 0.55; }
+
+.mcq-letter.is-correct { background: rgb(230, 244, 234); border-color: rgb(26, 127, 55); color: rgb(26, 127, 55); opacity: 1; }
+
+.mcq-letter.is-wrong { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); opacity: 1; }
+
+.feedback { margin: 10px 0px 0px; font-size: 15.5px; color: var(--ink); }
+
+.feedback.small { font-size: 14px; color: var(--ink2); min-height: 0px; }
+
+.feedback:empty { display: none; }
+
+.check-title { display: block; font-weight: 700; margin: 12px 0px 8px; font-size: 15.5px; }
+
+.check-item { display: flex; align-items: flex-start; gap: 12px; width: 100%; text-align: start; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 15.5px; line-height: 1.5; background: none; border-top: 0px; border-right: 0px; border-left: 0px; border-image: none; border-bottom: 1px solid var(--hair); padding: 10px 0px; min-height: 44px; color: var(--ink); cursor: pointer; }
+
+.check-box { flex: 0 0 22px; height: 22px; border: 1.5px solid var(--ink4,#c0bebf); border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; color: rgb(255, 255, 255); margin-top: 2px; background: rgb(255, 255, 255); font-size: 14px; }
+
+.check-item[aria-pressed="true"] .check-box { background: var(--teal); border-color: var(--teal); }
+
+.model-box { border-inline-start: 3px solid var(--teal); padding: 4px 12px 4px 0px; margin-top: 12px; }
+
+.model-text { margin: 0px; font-size: 15.5px; }
+
+.name-box { margin-top: 14px; border-width: 1.5px; border-color: rgb(214, 211, 212); transition: box-shadow 0.3s; }
+
+.name-box.attn { box-shadow: rgb(242, 201, 76) 0px 0px 0px 4px; }
+
+.name-row { display: flex; gap: 8px; align-items: stretch; }
+
+.name-input { flex: 1 1 0%; min-width: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 17px; padding: 10px 12px; border: 1px solid rgb(207, 204, 205); border-radius: 12px; background: rgb(255, 255, 255); color: var(--ink); }
+
+.who { margin: 0px; font-size: 17px; }
+
+.who span { color: var(--ink2); }
+
+.save-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.manual-copy { width: 100%; min-height: 180px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 14px; border: 1px solid rgb(207, 204, 205); border-radius: 12px; padding: 10px; margin-top: 10px; direction: rtl; }
+
+.closing { font-size: 13px; color: var(--muted); margin: 40px 0px 0px; line-height: 1.55; }
+
+body.locked #units { opacity: 0.72; }
+
+.savebar { position: fixed; bottom: calc(14px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); background: var(--ink); color: rgb(255, 255, 255); border-radius: 999px; padding: 8px 16px; font-size: 14.5px; font-weight: 600; box-shadow: rgba(0, 0, 0, 0.18) 0px 4px 16px; z-index: 10; max-width: calc(100% - 28px); text-align: center; }
+
+.savebar.ok { background: rgb(31, 95, 59); }
+
+.savebar.err { background: rgb(138, 59, 18); }
+
+[hidden] { display: none !important; }
+
+.case-title { margin: 0px 0px 6px; font-size: 15px; font-weight: 700; }
+
+.case-text { margin: 0px; font-size: 15.5px; }
+
+.task-list { margin: 0px; padding-inline-start: 22px; }
+
+.task-list li { margin-bottom: 0.5rem; }
+
+.topic-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.25rem 0px 0.5rem; }
+
+.topic-chip { border: 1px solid rgb(208, 208, 216); border-radius: 999px; padding: 0.2rem 0.8rem; font-size: 0.9rem; background: rgb(255, 255, 255); }
+
+.q-box > .ext-link { display: inline-block; margin: 0px 0px 10px; }
+
+.content h2 { font-size: 22px; line-height: 1.3; margin: 34px 0px 12px; font-weight: 750; color: rgb(155, 28, 46); }
+
+.content h3 { font-size: 18px; line-height: 1.35; margin: 0px 0px 10px; font-weight: 700; }
+
+.content ul, .content ol { margin: 0px 0px 10px; padding-inline-start: 22px; }
+
+.content li { margin-bottom: 4px; }
+
+.content a { color: rgb(155, 28, 46); font-weight: 650; text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+
+.box { border: 1px solid var(--info-b); background: var(--info); border-radius: 14px; padding: 12px 14px; margin: 0px 0px 12px; font-size: 15.5px; }
+
+.box.warn { background: var(--warn); border-color: var(--warn-b); }
+
+.box.small { font-size: 14.5px; }
+
+.cols { display: block; }
+
+.cols > * { margin-bottom: 10px; }
+
+.lbl { font-weight: 700; font-size: 15px; color: var(--ink2); margin: 12px 0px 4px; }
+
+.step { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 16px; margin: 0px 0px 14px; }
+
+.badge { display: inline-block; background: rgb(155, 28, 46); color: rgb(255, 255, 255); border-radius: 999px; padding: 1px 10px; font-size: 14px; margin-inline-end: 6px; vertical-align: 2px; }
+
+.q { background: rgb(253, 242, 244); border: 1px solid rgb(240, 205, 211); border-radius: 12px; padding: 10px 12px; margin: 12px 0px 8px; font-size: 16px; }
+
+.vid { margin: 6px 0px 0px; font-size: 15px; }
+
+.vid .chap { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+.q-answer { min-height: 100px; }
+
+body.locked .ans { background: rgb(246, 245, 245); }
+
+.table-wrap { overflow-x: auto; margin: 0px 0px 14px; }
+
+.mtable { width: 100%; border-collapse: collapse; background: rgb(255, 255, 255); border-radius: 12px; overflow: hidden; font-size: 15px; }
+
+.mtable th, .mtable td { border: 1px solid rgb(224, 220, 221); padding: 8px; text-align: start; vertical-align: top; }
+
+.mtable th { background: rgb(247, 236, 238); }
+
+.mtable input, .mtable textarea { width: 100%; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 16px; border: 1px solid rgb(214, 211, 212); border-radius: 8px; padding: 6px 8px; direction: rtl; background: rgb(255, 255, 255); }
+
+.mtable input { min-width: 70px; }
+
+.mtable textarea { min-width: 120px; resize: vertical; }
+
+.wq { display: flex; gap: 10px; background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 14px; margin: 0px 0px 12px; }
+
+.wqn { flex: 0 0 30px; height: 30px; border-radius: 50%; background: rgb(155, 28, 46); color: rgb(255, 255, 255); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+
+.wqt { flex: 1 1 0%; min-width: 0px; }
+
+.wqt .q-answer { margin-top: 10px; }
+
+.callout.submit { background: rgb(255, 244, 214); border-color: rgb(232, 199, 102); }
+
+.callout.submit p { font-size: 16px; }
+
+.btn.big { font-size: 17px; padding: 12px 22px; }
+
+.hint { margin-top: 8px; }
+
+body.locked .content .ans { opacity: 0.8; }
+
+#printout { display: none; }
+
+@media print {
+  @page { size: a4; margin: 14mm; }
+  body { background: rgb(255, 255, 255); font-size: 11pt; }
+  #app, .savebar { display: none !important; }
+  #printout { direction: rtl; font-family: Arial, Rubik, Heebo, sans-serif; color: rgb(0, 0, 0); display: block !important; }
+  #printout h1 { font-size: 18pt; margin: 0px 0px 4px; color: rgb(155, 28, 46); }
+  #printout .pmeta { font-size: 11pt; margin: 0px 0px 10px; border-bottom: 2px solid rgb(155, 28, 46); padding-bottom: 6px; }
+  #printout h2 { font-size: 13pt; margin: 14px 0px 6px; color: rgb(155, 28, 46); }
+  #printout .pq { margin: 0px 0px 10px; break-inside: avoid; }
+  #printout .pqt { font-weight: 700; margin: 0px 0px 3px; }
+  #printout .pqa { margin: 0px; white-space: pre-wrap; border-inline-start: 3px solid rgb(204, 204, 204); padding-inline-start: 8px; min-height: 1.2em; }
+  #printout .pqa.empty { color: rgb(136, 136, 136); }
+  #printout table { border-collapse: collapse; width: 100%; margin: 0px 0px 10px; }
+  #printout th, #printout td { border: 1px solid rgb(153, 153, 153); padding: 5px; text-align: right; vertical-align: top; }
+  #printout .pfoot { margin-top: 14px; font-size: 9.5pt; color: rgb(85, 85, 85); }
+}
+.savebar[hidden]{display:none}
+</style>
+</head>
+<body class="locked">
+<div id="app" class="page">
+  <header class="hero">
+    <h1>🫀 נתיחת לב חזיר</h1>
+    <p class="fact">דף עבודה אינטראקטיבי · מגמת רפואה · שכבה י׳</p>
+    <p class="intro">עוברים על שלבי הנתיחה, צופים בסרטון של כל שלב, ועונים כאן על השאלות. כל תשובה נשמרת אוטומטית.</p>
+  </header>
+
+  <section class="section">
+    <div class="callout submit"><p class="callout-title">📌 הגשה</p><p><strong>כל תלמיד/ה מגיש/ה את הדף בנפרד בקלאסרום.</strong> בסוף הדף לוחצים על "📥 הורדת הדף שלי כקובץ" ומעלים את הקובץ למטלה בקלאסרום.</p></div>
+    <div class="callout ok"><p class="callout-title">שמירה אוטומטית</p><p>כותבים שם מלא ולוחצים "התחלה". מכאן כל תשובה נשמרת אוטומטית תוך כדי כתיבה (מופיע "נשמר ✓"). אפשר לסגור את הדף ולחזור — כותבים שוב את אותו השם בדיוק וממשיכים מאותו מקום. התשובות נשמרות בטלפון או במחשב שבו כתבתם, לכן ממשיכים מאותו מכשיר.</p></div>
+    <div class="q-box name-box" id="namebox">
+      <form id="nameform" autocomplete="off">
+        <label class="check-title" for="student-name">שם התלמיד/ה (שם פרטי ומשפחה)</label>
+        <div class="name-row">
+          <input id="student-name" class="name-input" type="text" maxlength="80" placeholder="כתבו את שמכם המלא" enterkeyhint="go">
+          <button type="submit" class="btn primary" id="startbtn">התחלה</button>
+        </div>
+        <p class="feedback small" id="namemsg" role="status"></p>
+      </form>
+      
+    </div>
+  </section>
+
+  <main class="content" id="content">
+
+<h2>1. מטרות הפעילות</h2>
+<ul>
+<li>לזהות את המבנה החיצוני של הלב: צד ימין ושמאל, צד קדמי ואחורי, חדרים ועליות, כלי הדם הגדולים והעורקים הכליליים.</li>
+<li>לזהות את ארבעת חללי הלב ואת ארבעת המסתמים, ולהבין כיצד הם מכוונים את זרימת הדם לכיוון אחד.</li>
+<li>לזהות מיתרי גידים ושרירים פפילריים ולהבין את תפקידם.</li>
+<li>להשוות בין עובי דפנות חדר ימין וחדר שמאל ולקשר בין <b>מבנה לתפקוד</b>.</li>
+<li>לתרגל עבודה מדויקת, בטוחה ומכבדת עם איבר אמיתי.</li>
+</ul>
+<div class="box small">💡 לב החזיר דומה מאוד ללב האדם בגודלו ובמבנהו, ולכן משתמשים בו בהוראה ובמחקר. הלבבות מגיעים מתעשיית המזון — מתייחסים אליהם בכבוד וברצינות.</div>
+
+<h2>2. ציוד ובטיחות</h2>
+<div class="cols"><div><b>ציוד לכל קבוצה</b>
+<ul><li>לב חזיר שלם (שטוף)</li><li>מגש נתיחה</li><li>מספריים לנתיחה</li><li>פינצטה</li><li>סרגל (אם יש)</li><li>כפפות חד-פעמיות (ניטריל)</li><li>מגבות נייר, ניילון לפריסה על השולחן</li></ul></div>
+<div class="box warn"><b>⚠️ כללי בטיחות</b>
+<ul><li>עובדים <b>רק עם כפפות</b> מתחילת הפעילות ועד סוף הניקיון.</li>
+<li>הכלים היחידים בנתיחה: <b>מספריים ופינצטה</b>. כל הגזירה במספריים, וכל ההרמה, המשיכה והגישוש — בפינצטה.</li>
+<li>הלב מונח תמיד על המגש — <b>לא גוזרים כשהלב באוויר או ביד</b>.</li>
+<li><b>זהירות עם קצות המספריים</b> — הם חדים. גוזרים <b>הרחק מהגוף ומהיד המחזיקה</b>, בתנועות קצרות ומבוקרות, והקצוות מופנים תמיד כלפי מטה, אל המגש.</li>
+<li>מעבירים מספריים <b>סגורים, כשהידית מופנית לחבר</b>, או מניחים אותם על המגש — לא מושיטים קצוות פתוחים.</li>
+<li>בכל דקירה או פציעה — מודיעים מיד למורה.</li>
+<li>לא אוכלים, לא שותים ולא נוגעים בפנים או בטלפון בזמן הנתיחה.</li>
+<li>בסוף: שטיפת ידיים יסודית במים וסבון (גם אחרי הכפפות).</li></ul></div></div>
+
+<h2>3. מבנה חיצוני</h2>
+<div class="lbl">איך מזהים צד ימין/שמאל וקדמי/אחורי?</div>
+<ul>
+<li><b>קודקוד הלב</b> (החלק המחודד, למטה) שייך לחדר שמאל.</li>
+<li><b>מששו את שני החדרים</b>: חדר שמאל מוצק ונוקשה, חדר ימין רך וגמיש יותר.</li>
+<li><b>הצד הקדמי</b>: רואים בו חריץ אלכסוני שבו עובר עורק כלילי (ושומן) — החריץ מפריד בין החדרים. בצד זה בולט עורק הריאה, שיוצא מהחלק העליון של חדר ימין ונמצא לפני אבי העורקים.</li>
+<li>הניחו את הלב כשהצד הקדמי מולכם: צד ימין של הלב נמצא <b>משמאלכם</b> (כמו כשמסתכלים על אדם שעומד מולכם).</li>
+</ul>
+<div class="cols"><div><div class="lbl">חדרים ועליות</div>
+<ul><li><b>העליות</b> — למעלה, דפנות דקות ורכות (לעיתים קצוצות בלב מהקצביה). לכל עלייה ‘אוזנית’ — שקיק קטן ומקומט.</li>
+<li><b>החדרים</b> — רוב נפח הלב, דפנות שריריות עבות.</li></ul>
+<div class="lbl">העורקים הכליליים ושומן</div>
+<ul><li>כלי דם על פני הלב, שמספקים חמצן לשריר הלב עצמו.</li>
+<li>הם עוברים בחריצים, ולרוב מוקפים <b>שומן</b> לבן-צהבהב.</li></ul></div>
+<div><div class="lbl">כלי הדם הגדולים</div>
+<dl><dt>אבי העורקים (אאורטה): </dt><dd>הכלי העבה והאלסטי ביותר, יוצא מחדר שמאל ומתעקל לאחור.</dd>
+<dt>עורק הריאה: </dt><dd>יוצא מחדר ימין, מקדימה, ומתפצל לשני ענפים לריאות.</dd>
+<dt>הווריד הנבוב העליון והתחתון: </dt><dd>נכנסים לעלייה ימין; דפנות דקות ורכות.</dd>
+<dt>ורידי הריאה: </dt><dd>כמה פתחים קטנים בצד האחורי של עלייה שמאל.</dd></dl>
+<div class="small">טיפ: דופן עורק עבה ושומרת על צורתה; דופן וריד דקה וקורסת.</div></div></div>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_19uiETHxe4&amp;t=100s">▶ צפייה מדקה 1:40</a> <span class="chap">בסרטון <bdi dir="ltr">Heart Dissection · The Anatomy Gal</bdi>, פרק: <bdi dir="ltr">External heart anatomy</bdi></span></div>
+
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_19uiETHxe4&amp;t=302s">▶ צפייה מדקה 5:02</a> <span class="chap">בסרטון <bdi dir="ltr">Heart Dissection · The Anatomy Gal</bdi>, פרק: <bdi dir="ltr">Major heart vessels</bdi></span></div>
+
+<div class="box warn"><b>📵 בזמן הנתיחה לא נוגעים בטלפון.</b> בזמן העבודה מתבוננים ועונים בעל-פה בקבוצה. את הדף ממלאים <b>אחרי הנתיחה</b> — אחרי הורדת הכפפות ושטיפת ידיים (בסוף השיעור או בבית).</div>
+<h2>4. שלבי הנתיחה</h2>
+<div class="box small">לכל שלב: מה עושים ← מה מחפשים ← שאלה מנחה ← קישור לרגע המתאים בסרטון. הסרטונים באנגלית — אפשר להפעיל כתוביות (CC) ובהגדרות לבחור ‘תרגום אוטומטי’ ← עברית. שימו לב: בכל סרטון שיטת הגזירה מעט שונה, ובחלק מהסרטונים משתמשים באזמל — אנחנו עובדים <b>רק עם מספריים ופינצטה</b>; פעלו לפי ההוראות בדף ולפי המורה.</div>
+<div class="step"><h3><span class="badge">שלב א</span> פתיחת הצד הימני: גזירה דרך הווריד הנבוב אל חדר ימין</h3>
+<div class="lbl">מה עושים</div><ol><li>הניחו את הלב כשהצד הקדמי כלפי מעלה.</li><li>הכניסו את להב המספריים לתוך הווריד הנבוב העליון, אל תוך עלייה ימין (אפשר להחזיק ולהרים את שפת הווריד בפינצטה).</li><li>גזרו לאורך דופן עלייה ימין והמשיכו כלפי מטה לאורך הדופן החיצונית של חדר ימין, במקביל לחריץ שבין החדרים, עד קרוב לקודקוד (אין צורך לגזור את הקודקוד עצמו).</li><li>פתחו בעדינות את הדפנות כמו ספר (היעזרו בפינצטה).</li></ol>
+<div class="lbl">מה מחפשים ומה רואים</div><ul><li>חלל עלייה ימין: דופן דקה יחסית, ובתוכה פתחי הווריד הנבוב העליון והתחתון.</li><li>חלל חדר ימין: גדול, בעל דופן דקה יחסית.</li><li>פני השטח הפנימיים של החדר מחוספסים — אלה רצועות שריר (טרבקולות).</li></ul>
+<div class="q">❓ <b>שאלה מנחה:</b> מאיזה כלי דם מגיע הדם אל עלייה ימין, והאם הוא עשיר או דל בחמצן?</div><textarea class="q-answer ans" data-id="s1" placeholder="התשובה שלי…"></textarea>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gJ2PdzgcQh8&amp;t=284s">▶ צפייה מדקה 4:44</a> <span class="chap">בסרטון <bdi dir="ltr">Heart dissection video demonstration · STEM Learning</bdi>, פרק: <bdi dir="ltr">Initial incisions</bdi></span></div></div><div class="step"><h3><span class="badge">שלב ב</span> המסתם התלת-צניפי ומסתם עורק הריאה</h3>
+<div class="lbl">מה עושים</div><ol><li>מצאו את הפתח שבין עלייה ימין לחדר ימין — עליו יושב המסתם התלת-צניפי. ספרו את הצניפים (עלי המסתם).</li><li>הכניסו פינצטה סגורה מחדר ימין כלפי מעלה, אל תוך עורק הריאה, כדי למצוא את הדרך.</li><li>הכניסו את להב המספריים לאותו פתח וגזרו לאורך עורק הריאה, מהחדר כלפי מעלה, ופתחו אותו.</li></ol>
+<div class="lbl">מה מחפשים ומה רואים</div><ul><li>המסתם התלת-צניפי: שלושה צניפים (עלים) דקים ולבנבנים בין עלייה ימין לחדר ימין.</li><li>מסתם עורק הריאה (מסתם סהרוני): בבסיס עורק הריאה — שלושה ‘כיסים’ קטנים בצורת חצי ירח.</li><li>נסו למלא כיס במעט מים מבקבוק משפך ולראות שהוא נסגר.</li></ul>
+<div class="q">❓ <b>שאלה מנחה:</b> למה חשוב שיהיה מסתם בכניסה לעורק הריאה? מה היה קורה לדם בלעדיו כשהחדר נרגע?</div><textarea class="q-answer ans" data-id="s2" placeholder="התשובה שלי…"></textarea>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_19uiETHxe4&amp;t=662s">▶ צפייה מדקה 11:02</a> <span class="chap">בסרטון <bdi dir="ltr">Heart Dissection · The Anatomy Gal</bdi>, פרק: <bdi dir="ltr">Internal heart valves</bdi></span></div></div><div class="step"><h3><span class="badge">שלב ג</span> פתיחת הצד השמאלי: עלייה שמאל וחדר שמאל</h3>
+<div class="lbl">מה עושים</div><ol><li>הפכו את הלב כך שהצד האחורי כלפי מעלה, ואתרו את פתחי ורידי הריאה (בעלייה שמאל).</li><li>הכניסו את להב המספריים לאחד מורידי הריאה וגזרו לאורך דופן עלייה שמאל.</li><li>המשיכו לגזור כלפי מטה לאורך הדופן החיצונית של חדר שמאל, עד קרוב לקודקוד. הדופן עבה — גזרו בגזירות קצרות, החזיקו את השפה בפינצטה, וגזרו תמיד הרחק מהיד המחזיקה.</li><li>פתחו את החלל.</li></ol>
+<div class="lbl">מה מחפשים ומה רואים</div><ul><li>דופן חדר שמאל עבה ונוקשה הרבה יותר מדופן חדר ימין — מרגישים את זה כבר בזמן הגזירה.</li><li>חלל חדר שמאל צר ומוארך יחסית, והוא מגיע עד קודקוד הלב.</li></ul>
+<div class="q">❓ <b>שאלה מנחה:</b> לאן נשלח הדם מחדר שמאל, ומה המרחק שהוא צריך לעבור לעומת הדם שיוצא מחדר ימין?</div><textarea class="q-answer ans" data-id="s3" placeholder="התשובה שלי…"></textarea>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gJ2PdzgcQh8&amp;t=372s">▶ צפייה מדקה 6:12</a> <span class="chap">בסרטון <bdi dir="ltr">Heart dissection video demonstration · STEM Learning</bdi>, פרק: <bdi dir="ltr">Internal heart structure</bdi></span></div></div><div class="step"><h3><span class="badge">שלב ד</span> המסתם הדו-צניפי (מיטרלי) ומסתם אבי העורקים</h3>
+<div class="lbl">מה עושים</div><ol><li>מצאו את המסתם שבין עלייה שמאל לחדר שמאל וספרו את הצניפים שלו.</li><li>הכניסו פינצטה סגורה מחדר שמאל כלפי מעלה אל אבי העורקים (אאורטה). שימו לב שהפתח נמצא מאחורי אחד מצניפי המסתם המיטרלי.</li><li>הכניסו את להב המספריים לאותו פתח, גזרו לאורך אבי העורקים ופתחו אותו.</li></ol>
+<div class="lbl">מה מחפשים ומה רואים</div><ul><li>המסתם הדו-צניפי (מיטרלי): שני צניפים (עלים) גדולים וחזקים.</li><li>מסתם אבי העורקים: שלושה כיסים סהרוניים, דומים למסתם עורק הריאה.</li><li>ממש מעל הכיסים יש שני פתחים קטנים — אלה הכניסות לעורקים הכליליים. נסו להכניס אליהם בעדינות קצה של פינצטה סגורה.</li></ul>
+<div class="q">❓ <b>שאלה מנחה:</b> העורקים הכליליים יוצאים מאבי העורקים ממש בתחילתו. למה זה הגיוני מבחינת אספקת חמצן לשריר הלב?</div><textarea class="q-answer ans" data-id="s4" placeholder="התשובה שלי…"></textarea>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mvCHOwtFxXA&amp;t=548s">▶ צפייה מדקה 9:08</a> <span class="chap">בסרטון <bdi dir="ltr">Pig Heart Dissection · Ren Hartung</bdi>, פרק: <bdi dir="ltr">Valves</bdi></span></div></div><div class="step"><h3><span class="badge">שלב ה</span> מיתרי גידים ושרירים פפילריים</h3>
+<div class="lbl">מה עושים</div><ol><li>הסתכלו מתחת לצניפים של המסתם התלת-צניפי והמסתם המיטרלי.</li><li>משכו בעדינות בפינצטה את אחד המיתרים וראו לאן הוא מחובר בשני קצותיו.</li><li>השוו את מספר וגודל השרירים הפפילריים בחדר ימין ובחדר שמאל.</li></ol>
+<div class="lbl">מה מחפשים ומה רואים</div><ul><li>מיתרי גידים: חוטים לבנים דקים וחזקים, המחוברים מצד אחד לשולי הצניפים.</li><li>שרירים פפילריים: בליטות שריר בדופן החדר, שאליהן מחוברים מיתרי הגידים מהצד השני.</li><li>בחדר שמאל השרירים הפפילריים גדולים וחזקים יותר.</li></ul>
+<div class="q">❓ <b>שאלה מנחה:</b> כשהחדר מתכווץ, הלחץ בתוכו גבוה מאוד. מה מונע מצניפי המסתם להתהפך לאחור אל העלייה?</div><textarea class="q-answer ans" data-id="s5" placeholder="התשובה שלי…"></textarea>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Kh2QKzVugHk&amp;t=963s">▶ צפייה מדקה 16:03</a> <span class="chap">בסרטון <bdi dir="ltr">Pig Heart Dissection - from start to finish · Imagine Jenkins</bdi>, פרק: <bdi dir="ltr">Examine the interior…</bdi></span></div></div><div class="step"><h3><span class="badge">שלב ו</span> השוואת עובי הדפנות והמחיצה בין החדרים</h3>
+<div class="lbl">מה עושים</div><ol><li>הניחו זה מול זה את דופן חדר ימין ואת דופן חדר שמאל שגזרתם, באותו גובה (אפשר לגזור במספריים רצועה קטנה מכל דופן).</li><li>השוו את עובי כל דופן ואת עובי המחיצה בין החדרים: הסתכלו ומששו בין האצבעות (סרגל — אם יש), ורשמו בטבלת ההשוואה שנמצאת בהמשך, בחלק 5 (דף עבודה).</li><li>מששו את המחיצה: האם יש בה פתח בין שני החדרים?</li></ol>
+<div class="lbl">מה מחפשים ומה רואים</div><ul><li>דופן חדר שמאל עבה בערך פי 2–3 מדופן חדר ימין.</li><li>המחיצה בין החדרים עבה ושרירית, ואין בה פתח — כך דם עשיר בחמצן ודם דל בחמצן לא מתערבבים.</li><li>בחתך רוחבי חדר שמאל נראה עגול, וחדר ימין ‘עוטף’ אותו כמו סהר.</li></ul>
+<div class="q">❓ <b>שאלה מנחה:</b> מה היה קורה לאספקת החמצן לגוף אילו היה פתח במחיצה בין החדרים?</div><textarea class="q-answer ans" data-id="s6" placeholder="התשובה שלי…"></textarea>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_19uiETHxe4&amp;t=458s">▶ צפייה מדקה 7:38</a> <span class="chap">בסרטון <bdi dir="ltr">Heart Dissection · The Anatomy Gal</bdi>, פרק: <bdi dir="ltr">Heart wall and chambers</bdi></span></div></div>
+
+<h2>5. דף עבודה</h2>
+<div class="lbl">טבלת השוואה (שלב ו)</div>
+<div class="table-wrap"><table class="mtable"><tbody><tr><th>מבנה</th><th>עובי (דק / בינוני / עבה; מ״מ אם יש סרגל)</th><th>תיאור / מה הרגשתי במישוש</th></tr><tr><td>דופן חדר ימין</td><td><input class="ans num" data-id="m_rv_thick" type="text" maxlength="40" placeholder="למשל: עבה"></td><td><textarea class="ans note" data-id="m_rv_note" rows="2"></textarea></td></tr><tr><td>דופן חדר שמאל</td><td><input class="ans num" data-id="m_lv_thick" type="text" maxlength="40" placeholder="למשל: עבה"></td><td><textarea class="ans note" data-id="m_lv_note" rows="2"></textarea></td></tr><tr><td>מחיצה בין החדרים</td><td><input class="ans num" data-id="m_sep_thick" type="text" maxlength="40" placeholder="למשל: עבה"></td><td><textarea class="ans note" data-id="m_sep_note" rows="2"></textarea></td></tr></tbody></table></div>
+<div class="lbl" style="margin:3mm 0 2mm">שאלות סיכום</div>
+<div class="wq"><div class="wqn">1</div><div class="wqt">תארו את מסלול הדם בלב, החל מהווריד הנבוב ועד יציאת הדם באבי העורקים. ציינו בדרך את ארבעת החללים ואת ארבעת המסתמים.<textarea class="q-answer ans" data-id="q1" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">2</div><div class="wqt"><b>שאלת חשיבה — מבנה ותפקוד:</b> ראיתם שדופן חדר שמאל עבה בהרבה מדופן חדר ימין. הסבירו מדוע, בהתבסס על המקום שאליו כל חדר שולח את הדם ועל הלחץ הנדרש לכך.<textarea class="q-answer ans" data-id="q2" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">3</div><div class="wqt">מה ההבדל בין המסתמים הצניפיים (התלת-צניפי והמיטרלי) לבין המסתמים הסהרוניים (של עורק הריאה ואבי העורקים) — במיקום ובמבנה?<textarea class="q-answer ans" data-id="q3" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">4</div><div class="wqt">מה תפקידם של מיתרי הגידים והשרירים הפפילריים? מה עלול לקרות אם מיתר גיד נקרע?<textarea class="q-answer ans" data-id="q4" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">5</div><div class="wqt">עורק הריאה מוביל דם דל בחמצן, וורידי הריאה מובילים דם עשיר בחמצן. לפי מה בכל זאת קובעים אם כלי דם הוא עורק או וריד?<textarea class="q-answer ans" data-id="q5" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">6</div><div class="wqt">היכן ראיתם את פתחי העורקים הכליליים? מה תפקידם, ומה קורה לשריר הלב כשאחד מהם נחסם (אוטם שריר הלב)?<textarea class="q-answer ans" data-id="q6" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">7</div><div class="wqt">כיצד הבחנתם בין הצד הימני לשמאלי של הלב כשהוא עדיין שלם? ציינו שני סימנים.<textarea class="q-answer ans" data-id="q7" placeholder="התשובה שלי…"></textarea></div></div><div class="wq"><div class="wqn">8</div><div class="wqt">מדוע משתמשים בלב חזיר ללימוד (ואפילו להשתלה ניסיונית באדם)? מה דומה בינו לבין לב האדם?<textarea class="q-answer ans" data-id="q8" placeholder="התשובה שלי…"></textarea></div></div>
+
+<h2>6. סיום וניקיון</h2>
+<ol>
+<li>עוטפים את כל הפסולת (שאריות הלב, מגבות נייר) בניילון שפרוס כמפה על השולחן, וסוגרים אותו.</li>
+<li>שוטפים את הכלים (מספריים ופינצטה) במים בכיור, בזהירות עם קצות המספריים, ומניחים אותם על <b>מגש אחד ייעודי</b>.</li>
+<li>את שאר המגשים מנקים ומניחים בערימה.</li>
+<li>את כל המגשים מניחים על שולחן המורה.</li>
+<li>מסירים כפפות (מהופכות) וזורקים לפח.</li>
+<li><b>שוטפים ידיים במים וסבון לפחות 20 שניות.</b></li>
+</ol>
+<div class="vid">🎬 <b>סרטון:</b> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Kh2QKzVugHk&amp;t=1439s">▶ צפייה מדקה 23:59</a> <span class="chap">בסרטון <bdi dir="ltr">Pig Heart Dissection - from start to finish · Imagine Jenkins</bdi>, פרק: <bdi dir="ltr">First part of clean up</bdi></span></div>
+
+<div class="box small" style="margin-top:5mm"><b>הסרטונים בדף (מיוטיוב, באנגלית):</b><ul style="margin-top:1mm"><li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_19uiETHxe4"><bdi dir="ltr">Heart Dissection</bdi></a> · <bdi dir="ltr">The Anatomy Gal</bdi> · אורך 16:57</li><li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gJ2PdzgcQh8"><bdi dir="ltr">Heart dissection video demonstration</bdi></a> · <bdi dir="ltr">STEM Learning</bdi> · אורך 10:32</li><li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mvCHOwtFxXA"><bdi dir="ltr">Pig Heart Dissection</bdi></a> · <bdi dir="ltr">Ren Hartung</bdi> · אורך 15:41</li><li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Kh2QKzVugHk"><bdi dir="ltr">Pig Heart Dissection - from start to finish</bdi></a> · <bdi dir="ltr">Imagine Jenkins</bdi> · אורך 30:20</li></ul></div>
+
+  </main>
+
+  <section class="section" id="submit">
+    <h2 class="section-label">הגשה בקלאסרום</h2>
+    <div class="callout submit"><p class="callout-title">📌 כל תלמיד/ה מגיש/ה את הדף בנפרד בקלאסרום</p><p>בטלפון: לוחצים "הורדת הדף שלי כקובץ" ומעלים את הקובץ למטלה. במחשב: אפשר גם "שמירה כ-PDF". אם שום כפתור לא מגיב — פותחים את הקישור בכרום/ספארי (לא מתוך וואטסאפ).</p></div>
+    <div class="save-row"><button type="button" class="btn primary big" id="docbtn">📥 הורדת הדף שלי כקובץ (מומלץ בטלפון)</button></div>
+    <div class="save-row"><button type="button" class="btn big" id="printbtn">📄 שמירה כ-PDF (מחשב)</button></div>
+    <p class="small hint">שמרו כ-PDF והעלו למטלה בקלאסרום</p>
+    <p class="feedback small" id="printmsg" role="status"></p>
+  </section>
+</div>
+
+<div id="printout" aria-hidden="true"></div>
+<div class="savebar" id="savebar" hidden></div>
+<script>
+(function(){
+"use strict";
+var P="heart-dissection:",body=document.body,cur=null,data={},t;
+function $(s){return document.querySelector(s);}
+function all(){return Array.prototype.slice.call(document.querySelectorAll(".ans"));}
+function key(n){return P+"ans:"+n.trim().replace(/\s+/g," ");}
+function get(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function set(k,v){try{localStorage.setItem(k,v);return true;}catch(e){return false;}}
+function bar(msg,cls){var b=$("#savebar");b.textContent=msg;b.className="savebar "+(cls||"");b.hidden=false;clearTimeout(bar.t);bar.t=setTimeout(function(){b.hidden=true;},1800);}
+function start(name){
+  name=name.trim().replace(/\s+/g," ");
+  if(name.split(" ").length<2){$("#namemsg").textContent="כתבו שם פרטי ושם משפחה 🙂";return;}
+  cur=name;set(P+"last",name);
+  try{data=JSON.parse(get(key(name))||"{}")||{};}catch(e){data={};}
+  all().forEach(function(el){el.value=data[el.dataset.id]||"";});
+  body.classList.remove("locked");
+  var n=Object.keys(data).filter(function(k){return data[k];}).length;
+  $("#namemsg").textContent=n?"שלום "+name+"! התשובות שלך נטענו ("+n+"). ממשיכים מאותו מקום.":"שלום "+name+"! אפשר להתחיל. כל תשובה נשמרת אוטומטית.";
+  $("#startbtn").textContent="החלפת שם";
+}
+$("#nameform").addEventListener("submit",function(e){e.preventDefault();start($("#student-name").value);});
+document.addEventListener("focusin",function(e){
+  if(!cur&&e.target.classList&&e.target.classList.contains("ans")){e.target.blur();var nb=$("#namebox");nb.classList.add("attn");nb.scrollIntoView({behavior:"smooth",block:"center"});$("#namemsg").textContent="קודם כותבים שם מלא ולוחצים \"התחלה\" ⬆️";setTimeout(function(){nb.classList.remove("attn");},1600);$("#student-name").focus({preventScroll:true});}
+});
+document.addEventListener("input",function(e){
+  var el=e.target;if(!cur||!el.classList.contains("ans"))return;
+  data[el.dataset.id]=el.value;clearTimeout(t);
+  t=setTimeout(function(){bar(set(key(cur),JSON.stringify(data))?"נשמר ✓":"לא ניתן לשמור בדפדפן הזה",set(key(cur),JSON.stringify(data))?"ok":"err");},500);
+});
+var last=get(P+"last");if(last){$("#student-name").value=last;start(last);}
+
+/* collect questions + answers */
+function txt(n){return (n.textContent||"").replace(/\s+/g," ").trim();}
+function collect(){
+  var out={steps:[],table:[],qs:[]};
+  document.querySelectorAll(".step").forEach(function(s){var q=s.querySelector(".q"),a=s.querySelector(".ans");if(q&&a)out.steps.push({t:txt(s.querySelector("h3")),q:txt(q).replace(/^❓\s*/,""),a:a.value});});
+  document.querySelectorAll(".mtable tr").forEach(function(r,i){if(!i)return;var c=r.querySelectorAll("td");out.table.push([txt(c[0]),c[1].querySelector(".ans").value,c[2].querySelector(".ans").value]);});
+  document.querySelectorAll(".wq").forEach(function(w){var c=w.querySelector(".wqt").cloneNode(true),a=w.querySelector(".ans");c.querySelector("textarea").remove();out.qs.push({n:txt(w.querySelector(".wqn")),q:txt(c),a:a.value});});
+  return out;
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function doc(){
+  var d=collect(),dt=new Date().toLocaleDateString("he-IL"),h="";
+  h+='<h1>🫀 נתיחת לב חזיר — דף עבודה</h1><p class="pmeta"><b>שם:</b> '+esc(cur||"")+' · <b>תאריך:</b> '+dt+' · מגמת רפואה · שכבה י׳</p>';
+  h+='<h2>שאלות מנחות בשלבי הנתיחה</h2>';
+  d.steps.forEach(function(s){h+='<div class="pq"><p class="pqt">'+esc(s.t)+': '+esc(s.q)+'</p><p class="pqa'+(s.a.trim()?"":" empty")+'">'+esc(s.a.trim()||"(לא נענה)")+'</p></div>';});
+  h+='<h2>טבלת השוואה</h2><table><tr><th>מבנה</th><th>עובי</th><th>תיאור</th></tr>';
+  d.table.forEach(function(r){h+='<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td></tr>';});
+  h+='</table><h2>שאלות סיכום</h2>';
+  d.qs.forEach(function(q){h+='<div class="pq"><p class="pqt">'+esc(q.n)+'. '+esc(q.q)+'</p><p class="pqa'+(q.a.trim()?"":" empty")+'">'+esc(q.a.trim()||"(לא נענה)")+'</p></div>';});
+  h+='<p class="pfoot">הופק מדף העבודה האינטראקטיבי "נתיחת לב חזיר".</p>';
+  return h;
+}
+function need(){if(!cur){$("#printmsg").textContent="קודם כותבים שם מלא ולוחצים \"התחלה\" (למעלה).";return false;}return true;}
+$("#printbtn").addEventListener("click",function(){if(!need())return;$("#printout").innerHTML=doc();window.print();});
+$("#docbtn").addEventListener("click",function(){
+  if(!need())return;
+  var css="body{font-family:Arial,sans-serif;direction:rtl;max-width:760px;margin:20px auto;padding:0 14px;color:#000}h1{color:#9b1c2e}h2{color:#9b1c2e;font-size:1.1em;margin-top:18px}.pmeta{border-bottom:2px solid #9b1c2e;padding-bottom:6px}.pqt{font-weight:700;margin:0 0 3px}.pqa{white-space:pre-wrap;border-right:3px solid #ccc;padding-right:8px;margin:0 0 12px}.empty{color:#888}table{border-collapse:collapse;width:100%}th,td{border:1px solid #999;padding:5px;text-align:right;vertical-align:top}";
+  var html='<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>נתיחת לב חזיר — '+esc(cur)+'</title><style>'+css+'</style></head><body>'+doc()+'</body></html>';
+  try{var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([html],{type:"text/html"}));a.download="נתיחת לב חזיר - "+cur+".html";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},2000);
+    $("#printmsg").textContent="הקובץ ירד ✓ עכשיו מעלים אותו למטלה בקלאסרום.";}
+  catch(e){$("#printmsg").textContent="ההורדה לא הצליחה. פתחו את הקישור בכרום או בספארי (לא מתוך וואטסאפ) ונסו שוב.";}
+});
+})();
+</script>
+
+
+
+
+
+
+</body></html>
